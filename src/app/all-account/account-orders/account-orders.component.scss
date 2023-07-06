@@ -1,0 +1,114 @@
+* {
+    font-family: 'Lora';
+    box-sizing: border-box;
+}
+
+.account-container {
+    .row {
+        .col {
+            padding: 30px 40px;
+
+            //background-image: url("../../../assets/newsletter2.png");
+            h2 {
+                text-shadow: 2px 2px 2px black;
+                margin-left: 110px;
+            }
+        }
+    }
+
+    .row {
+        .col-3 {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .col-9 {
+            padding-bottom: 50px;
+            padding-right: 50px;
+            //display: flex;
+            gap: 10px;
+
+            .container-acc {
+                background-color: rgb(229, 214, 237);
+                width: 1090px;
+                padding: 30px;
+                box-shadow: 1px 1px 14px 7px black;
+                border-radius: 2px;
+
+                .search {
+                    position: relative;
+                    padding-top: 20px;
+
+                    .search-input {
+                        border-radius: 3px;
+                        border: 1px solid #d4d4d4;
+                        width: 100%;
+                        width: 322px;
+                        height: 31px;
+                        outline: none;
+                        font-size: 16px;
+                        color: black;
+                        padding-left: 10px;
+                    }
+
+                    button .bi-search {
+                        font-size: 16px;
+                        padding-left: 10px;
+                        outline: none;
+                        position: absolute;
+                    }
+                    
+                    button {
+                        border: none;
+                        position: absolute;
+                        background-color: transparent;
+                        left: 288px;
+                        top: 23px
+                    }
+                }
+
+                .container-order {
+                    position: relative;
+                    //max-width: 1000px;
+                    //width: 100%;
+                    background: #fff;
+                    padding: 25px;
+                    border-radius: 3px;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                    margin-top: 25px;
+
+                    .order-nr {
+                        font-size: 17px;
+                        font-weight: 600;
+                    }
+
+                    .order-details {
+                        list-style-type: none;
+                        padding-left: 0px;
+                        padding-top: 15px;
+
+                        li {
+                            text-decoration: none;
+                            padding-bottom: 5px;
+                        }
+                    }
+
+                    .more-details {
+                        position: relative;
+                        left: 0px;
+                        border-radius: 2px;
+                        top: 0px;
+                        padding: 7px;
+                        width: 157px;
+                        color: #fff;
+                        background-color: var(--button-bg-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.row {
+    --bs-gutter-x: 0;
+}

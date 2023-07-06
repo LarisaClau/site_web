@@ -1,0 +1,73 @@
+<div class="container-pg">
+    <section class="container">
+        <header>Inregistrare</header>
+        <form (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" class="form">
+
+            <div class="input-box">
+                <label>Nume*</label>
+                <input type="text" placeholder="Adauga nume" name="name" formControlName="name" required />
+                <div class="err" *ngIf="submitted && f.name.errors">
+                    <div *ngIf="f.name.errors.required">Completeaza numele</div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>Prenume*</label>
+                <input type="text" placeholder="Adauga prenume" name="fname" formControlName="fname" required />
+                <div class="err" *ngIf="submitted && f.fname.errors">
+                    <div *ngIf="f.fname.errors.required">Completeaza prenumele</div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>Data nasterii*</label>
+                <input type="date" placeholder="Adauga data nastere" required formControlName="birthday"/>
+            </div>
+
+            <div class="input-box">
+                <label>Email*</label>
+                <input type="text" placeholder="nume.prenume@email.com" name="email" formControlName="email" required
+                    email />
+                <div class="err" *ngIf="submitted && f.email.errors">
+                    <div *ngIf="f.email.errors.required">Completeaza o adresa de email</div>
+                    <div *ngIf="f.email.errors.email">Adresa de email nu este valida</div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="input-box">
+                    <span class="details">Parola*</span>
+                    <input [type]="showpassword ? 'text': 'password'" placeholder="*********" name="password" class="test"
+                        formControlName="password" required>
+                    <i (click)="toggleShow()" class="bi bi-eye eye" *ngIf=" showpassword"></i>
+                    <i (click)="toggleShow()" class="bi bi-eye-slash eye" *ngIf="!showpassword"></i>
+                    <div class="err" *ngIf="submitted && f.password.errors">
+                        <div class="error-message" *ngIf="f.password.errors.required">Completeaza parola</div>
+                        <div class="error-message" *ngIf="f.password.errors.minlength">Parola trebuie sa aiba minim 8
+                            caractere</div>
+                        <div class="error-message" *ngIf="!f.password.errors.minlength && f.password.errors.pattern">Alege o parola mai puternica.</div>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Confirma parola*</span>
+                    <input [type]="showconfirmationpassword ? 'text': 'password'" placeholder="*********"
+                        name="confirmationpassword" formControlName="confirmationpassword" required />
+                    <i (click)="toggleShoww()" class="bi bi-eye eye" *ngIf=" showconfirmationpassword"></i>
+                    <i (click)="toggleShoww()" class="bi bi-eye-slash eye" *ngIf="!showconfirmationpassword"></i>
+                    <div class="err" *ngIf="submitted && f.confirmationpassword.errors">
+                        <div class="error-message" *ngIf="f.confirmationpassword.errors.required">Confirma parola</div>
+                        <div class="error-message" *ngIf="f.confirmationpassword.errors.MustMatch">Completeaza parola
+                            identic</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button>Creeaza cont</button>
+            <div class="login">
+                <span routerLinkActive="active" routerLink="/login">Ai deja cont? Apasa aici.</span>
+            </div>
+        </form>          
+    </section>
+</div>

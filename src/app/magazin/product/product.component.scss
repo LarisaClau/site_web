@@ -1,0 +1,280 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lora';
+}
+
+.product-container {
+    display: flex;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+}
+
+.col-left {
+    padding: 30px;
+    text-align: end;
+}
+
+.col-right {
+    padding: 30px;
+}
+
+.ml-price {
+    display: flex;
+    font-size: 18px;
+}
+
+.right {
+    text-align: end;
+}
+
+.buton-favorite {
+    padding-bottom: 15px;
+    width: 100%;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: transparent;
+    font-size: 16px;
+    align-items: center;
+}
+
+.product-img {
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    max-height: 550px;
+}
+.heart {
+    padding-right: 10px;
+}
+
+.q-add {
+    display: flex;
+}
+
+.q {
+    font-size: 17px;
+    padding: 5px;
+    padding-left: 34px;
+    margin-right: 10px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.input-q {
+    font-size: 17px;
+    padding-top: 3.8px;
+    padding-left: 32px;
+    width: 85px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.btn-mp {
+    font-size: 17px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.w {
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+.btn-cart {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    width: 550px;
+    background-image: linear-gradient(to right, #9d80ae, rebeccapurple);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 0% 100%;
+    transition: background-size 0.6s ease-in-out;
+}
+
+.btn-cart:hover {
+    background-size: 100% 100%;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    background-color: white;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+li:hover {
+    border-bottom: 2px solid black;
+}
+
+.tabb {
+    padding-left: 50px;
+    padding-right: 40px;
+    padding-bottom: 50px;
+}
+
+.describe {
+    display: flex;
+    padding-top: 10px;
+}
+
+.row {
+    display: flex;
+    padding-top: 10px;
+}
+
+span {
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+ngb-rating {
+    color: black;
+    font-size: 30px;
+}
+
+.ddd {
+    display: flex;
+    gap: 19px;
+}
+
+.container-review {
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px 1px rgb(229, 214, 237);
+
+    .column-name {
+        display: flex;
+        justify-content: space-between;
+
+        .user-name {
+            font-size: 16px;
+        }
+
+        .date-stars {
+            display: flex;
+
+            .stars {
+                font-size: 16px;
+                margin-right: 10px;
+            }
+
+            .date {
+                display: flex;
+                justify-content: end;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.btn-save {
+    padding: 12px 20px;
+    background-color: #252925;
+    color: white;
+    border: none;
+    font-size: 16px;
+    width: 130px;
+    margin: 15px 0px;
+}
+
+.rating {
+    display: flex;
+
+    .media {
+        border-radius: 3px;
+        background-color: rgb(229, 214, 237);
+        //color: white;
+        padding: 20px;
+        // padding-left: 15px;
+        // padding-right: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 160px;
+        //display: flex;
+
+        .media-title {
+            align-items: center;
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .num-media {
+            font-size: 26px;
+            margin-right: 50px;
+
+        }
+
+        .media-text {
+            align-items: center;
+            display: flex;
+            font-size: 13px;
+        }
+    }
+
+    .rating-stars {
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        .rating-bar {
+            width: 400px;
+            height: 15px;
+            background-color: #ddd;
+            margin-bottom: 10px;
+
+            .bar {
+                height: 100%;
+                background-color: black;
+            }
+        }
+    }
+}
+
+.testut {
+    display: flex;
+    justify-content: space-between;
+
+    .icon {
+        font-size: 12px;
+        margin-right: 5px;
+        display: flex;
+
+    }
+
+    .rating-num {
+        font-size: 12px;
+        margin-right: 5px;
+        display: flex;
+    }
+}
+
+.err {
+    color: red;
+    margin-top: 5px;
+}
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red !important;
+}
+
+textarea.ng-touched.ng-invalid {
+    border: 1px solid red !important;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+

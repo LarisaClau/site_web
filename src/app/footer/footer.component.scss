@@ -1,0 +1,95 @@
+* {
+    font-family: 'Lora';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 10 px 100px;
+    background:  rgb(229 214 237);
+    display: flex;
+    flex-direction: column;
+}
+
+footer .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-left: 130px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container h4 {
+    font-size: 20px;
+    margin-bottom: 13px;  
+}
+
+.about img {
+    height: 150px;
+}
+
+.about {
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+
+.about p {
+    margin-top: 10px;
+}
+
+.info {
+    flex-grow: 1;
+    flex-basis: 80%;
+}
+
+.contact {
+    flex-grow: 1;
+    flex-basis: 40%;
+}
+
+.info ul {
+     list-style-type: none; 
+     line-height: 1.6;
+}
+
+.info a {
+    text-decoration: none;
+    color: black;
+}
+
+.info a:hover {
+    color: #9d80ae;  
+}
+
+.contact ul {
+    list-style-type: none;
+    line-height: 1.6;
+}
+
+.contact i {
+    margin-right: 10px;
+}
+
+.media {
+    margin-top: 20px;
+}
+
+.fi {
+    margin-right: 15px;
+    color: black;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+

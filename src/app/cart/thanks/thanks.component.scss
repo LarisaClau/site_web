@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lora';
+}
+
+.container-thanks {
+    //background-image: url(../../../assets/home-text-background.jpg);
+
+    .container {
+        position: relative;
+        max-width: 1000px;
+        width: 100%;
+        background: #fff;
+        padding: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        margin-top: 70px;
+        margin-bottom: 70px;
+
+        h2 {
+            align-items: center;
+            padding-bottom: 30px;
+        }
+
+        .num {
+            font-weight: bold;
+            color: black;
+        }
+
+        span {
+            color: rgb(138, 104, 60);
+            font-weight: bold;
+            
+        }
+
+        span:hover {
+            border-bottom: 1px solid rgb(138, 104, 60);
+        }
+    }
+}

@@ -1,0 +1,104 @@
+<app-shop-navbar></app-shop-navbar>
+<app-carousel [images]="images" [autoSlide]="true"></app-carousel>
+<div class="brands">
+    <img class="img-logo" src="../../assets/logo-cupio.png" alt="Cupio">
+    <img class="img-logo" src="../../assets/logo-annettenails.png" alt="Annette Nails">
+    <img class="img-logo" src="../../assets/logo-crystal.png" alt="Crystal Nails">
+    <img class="img-logo" src="../../assets/logo-getnails.png" alt="Get Nails">
+    <img class="img-logo" src="../../assets/logo-her.png" alt="Her">
+    <img class="img-logo" src="../../assets/logo-staleks.png" alt="Staleks">
+    <img class="img-logo" src="../../assets/logo-yas.png" alt="Yas">
+    <img class="img-logo" src="../../assets/logo-nolia.jpg" alt="Nolia">
+    <img class="img-logo" src="../../assets/logo-bereski.png" alt="Bereski">
+    <img class="img-logo" src="../../assets/logo-reforma.png" alt="Reforma">
+    <img class="img-logo" src="../../assets/logo-spektr.png" alt="Spektr">
+    <img class="img-logo" src="../../assets/logo-kinetics.png" alt="Kinetics">
+    <img class="img-logo" src="../../assets/logo-victoria.png" alt="Victoria Vynn">
+    <img class="img-logo" src="../../assets/logo-tp.png" alt="Tp nails">
+</div>
+<div class="icons-slide-1">
+    <div class="col">
+        <div class="c">
+            <i class="bi bi-handbag icon"></i>
+            <div class="text">Peste 10000 de produse profesionale</div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="c">
+            <i class="bi bi-gem icon"></i>
+            <div class="text">Raport excelent pentru calitatea produselor & prețul acestora</div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="c">
+            <i class="bi bi-check-lg icon"></i>
+            <div class="text">Produse originale</div>
+        </div>
+    </div>
+</div>
+<div class="products">
+    <div class="title-products">
+        <span>Produse noi</span>
+    </div>
+    <div class="five-products">
+        <div class="box" *ngFor="let product of products_new">
+            <a routerLinkActive="active" (click)="navigateToProduct(product.id)">
+                <img src="{{product.image}}" alt="Imagine lipsa" />
+            </a>
+            <button id="myButton" class="buton-favorite">
+                <i (click)="toggleShowAdd(product.id)" class="bi bi-heart" *ngIf="verifiyIfWishlist(product.id) === false"></i>
+                <i (click)="toggleShowDelete(product.id)" class="bi bi-heart-fill"
+                *ngIf="verifiyIfWishlist(product.id) === true"></i>
+            </button>
+            <h4>{{product.name}}</h4>
+            <h5>{{product.price}} lei</h5>
+            <button class="buton-adauga" (click)="AddCart(product.id)">Adauga in cos</button>
+        </div>
+    </div>
+</div>
+<div class="products">
+    <div class="title-products">
+        <span>Produse bestseller</span>
+    </div>
+    <div class="five-products">
+        <div class="box" *ngFor="let product of products_bestseller">
+            <a routerLinkActive="active" (click)="navigateToProduct(product.id)">
+                <img src="{{product.image}}" alt="Imagine lipsa" />
+            </a>
+            <button id="myButton" class="buton-favorite">
+                <i (click)="toggleShowAdd(product.id)" class="bi bi-heart" *ngIf="verifiyIfWishlist(product.id) === false"></i>
+                <i (click)="toggleShowDelete(product.id)" class="bi bi-heart-fill" *ngIf="verifiyIfWishlist(product.id) === true"></i>
+            </button>
+            <h4>{{product.name}}</h4>
+            <h5>{{product.price}} lei</h5>
+            <button class="buton-adauga" (click)="AddCart(product.id)">Adauga in cos</button>
+        </div>
+    </div>
+</div>
+
+<div class="icons-slide-2">
+    <div class="col">
+        <div class="c">
+            <i class="bi bi-map icon"></i>
+            <div class="text">Transport gratuit la comenzi de peste 250 lei</div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="c">
+            <i class="bi bi-telephone icon"></i>
+            <div class="text">Suport telefonic</div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="c">
+            <i class="bi bi-arrow-repeat icon"></i>
+            <div class="text">Retur rapid in termen de 15 zile</div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="c">
+            <i class="bi bi-lock icon"></i>
+            <div class="text">Plata sigura prin mai multe variante</div>
+        </div>
+    </div>
+</div>

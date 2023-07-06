@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lora";
+  }
+
+  .container-pg {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    padding: 20px;
+    background: url(../../assets/home-text-background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .container {
+        position: relative;
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        
+
+        h1 {
+            font-size: 20px;
+        }
+      }
+  }

@@ -1,0 +1,179 @@
+* {
+  font-family: "Lora";
+  box-sizing: border-box;
+}
+
+.home-container {
+  .container-imgs {
+    .row {
+      padding-bottom: 7px;
+
+      .col-6 {
+        .img-row1 {
+          height: 300px;
+          width: 764px;
+        }
+
+        .img-row1:hover {
+          box-shadow: 5px 10px 18px #9d80ae;
+        }
+      }
+
+      .col-2 {
+        img {
+          height: 300px;
+        }
+
+        .img {
+          width: 100%;
+          padding: 0px;
+        }
+
+        .img:hover {
+          box-shadow: 5px 10px 18px #9d80ae;
+        }
+
+        .img-row1 {
+          width: 250px;
+        }
+
+        .img-row1:hover {
+          box-shadow: 5px 10px 18px #9d80ae;
+        }
+      }
+    }
+
+    .row {
+      .col-7 {
+        .img-row2 {
+          height: 280px;
+          width: 892px;
+        }
+
+        .img-row2:hover {
+          box-shadow: 5px 10px 18px #9d80ae;
+        }
+      }
+
+      .col-5 {
+        .img-row2 {
+          height: 280px;
+          width: 100%;
+          padding: 0px;
+        }
+
+        .img-row2:hover {
+          box-shadow: 5px 10px 18px #9d80ae;
+        }
+      }
+    }
+  }
+}
+
+.container-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 25px;
+  padding-top: 15px;
+  padding-bottom: 25px;
+
+  .icon-box {
+    background: rgb(201, 211, 235);
+    display: flex;
+    align-items: center;
+    box-shadow: var(--umbre);
+    border-radius: 0.5rem;
+    padding: 20px;
+    gap: 20px;
+
+    i {
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      font-size: 25px;
+      color: var(--black);
+      background: white;
+      text-align: center;
+      border-radius: 50%;
+    }
+  }
+
+  .icon-box:hover {
+    background-color: #9d80ae;
+    box-shadow: 5px 10px 18px #888888;
+
+    .i:hover {
+      background-color: rgb(159, 165, 179);
+    }
+  }
+}
+
+.all-texts {
+  background-image: url("../../assets/home-text-background.jpg");
+  padding: 40px;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  h3 {
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #333;
+  }
+
+  h3:hover {
+    font-size: 30px;
+  }
+
+  .first {
+    padding-bottom: 40px;
+
+    a {
+      color: black;
+      text-decoration: none;
+
+      p {
+        font-size: 17px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .second {
+    padding-bottom: 40px;
+
+    a {
+      color: black;
+      text-decoration: none;
+
+      p {
+        font-size: 17px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .third {
+
+    a {
+      color: black;
+      text-decoration: none;
+
+      p {
+        font-size: 17px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 3s ease;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.row {
+  --bs-gutter-x: 0;
+}

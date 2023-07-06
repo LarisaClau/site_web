@@ -1,0 +1,138 @@
+<div class="home-container">
+  <div class="container-imgs">
+    <div class="row">
+      <div class="col-6">
+        <img class="img-row1" src="../../assets/home1.jpg" alt="" />
+      </div>
+      <div class="col-2">
+        <a routerLinkActive="active" routerLink="/programari-unghii">
+          <img class="img-row1" src="../../assets/home6.jpg" alt="" />
+        </a>
+      </div>
+      <div class="col-2 ">
+        <a routerLinkActive="active" routerLink="/programari-unghii">
+          <img class="img-row1" src="../../assets/home5.jpg" alt="" />
+        </a>
+      </div>
+      <div class="col-2">
+        <a routerLinkActive="active" routerLink="/programari-unghii">
+          <img class="img" src="../../assets/home4.jpg" alt="" />
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-7">
+        <img class="img-row2" src="../../assets/home3.jpg" alt="" />
+      </div>
+      <div class="col-5">
+        <img class="img-row2" src="../../assets/home7.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+  <div class="container-icons">
+    <div class="icon-box">
+      <i class="bi bi-shop"></i>
+      <div class="content" *ngFor="let num of num_products">
+        <h5>{{num.nrProducts}}</h5>
+        <p>Produse multibrand</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <i class="bi bi-tags"></i>
+      <div class="content" *ngFor="let num_subcateg of num_subcategories">
+        <h5>{{num_subcateg.nrSubcateg}}</h5>
+        <p>Subcategorii produse</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <i class="bi bi-hearts"></i>
+      <div class="content"  *ngFor="let num_tr of num_trainers">
+        <h5>{{num_tr.nrTrainers}}</h5>
+        <p>Traineri</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <i class="bi bi-geo"></i>
+      <div class="content" *ngFor="let num_c of num_cities">
+        <h5>{{num_c.nrCities}}</h5>
+        <p>Orase unde te poti programa</p>
+      </div>
+    </div>
+  </div>
+  <div class="all-texts">
+    <div class="first">
+      <div class="text hidden"  id="primul_text">
+        <a routerLinkActive="active" routerLink="/magazin">
+          <h3>Magazin</h3>
+          <p>Peste 1000 de produse de cea mai inalta calitate de la branduri nationale cat si internationale renumite. O
+            varietate mare de
+            produse de toate genurile. Printre brandurile ce se gasesc pe acest site se enumera: Cupio, Staleks, Moyra,
+            Crystal Nails,
+            Kostka Bojana, Reforma, Spectra, Gelaxyo.
+          </p>
+        </a>
+      </div>
+    </div>
+    <div class="second">
+      <div class="text hidden" id="aldoilea_text">
+        <a routerLinkActive="active" routerLink="/cursuri">
+          <h3>Cursuri</h3>
+          <p>De acum, achizitionarea cursurilor va fi una mult mai usoara prin intermediul acestui site. De asemenea,
+            toate detaliile despre
+            cursurile pe care trainerii nostii le predau sunt redate aici. Ne mandrim cu cei mai cautati traineri din
+            Romania care va vor
+            introduce in lumea unghiilor, in aceasta meserie frumoasa. Andreea Popescu si Miruna Andreiescu asteapta sa va
+            indrume pe tot
+            parcursul vostru in arta unghiilor.
+          </p>
+        </a>
+      </div>
+    </div>
+    <div class="third">
+      <div class="text hidden" id="altreilea_text">
+        <a routerLinkActive="active" routerLink="/programari-unghii">
+          <h3>Programari unghii</h3>
+          <p>Ne-am gandit sa venim in ajutorul vostru fie ca sunteti tehniciene, fie cliente in sfera unghiilor. Ca
+            clienta, daca doresti
+            sa ai unghiute frumoase, vei avea la dispozitie o lista ampla de tehniciene formate de academia noastra. la
+            care poti sa iti faci
+            programare. Iar daca esti tehnician, beneficiezi de vizibilitate, de suport din partea noastra, dat si de
+            organizarea prohramarilor,
+            de mesaje de reamintire a programarilor trimise clientelor, astfel scapi de o grija.
+            Acceseaza platforma noastra de programari si vei fi surprinsa cat de utila e!
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container-icons">
+    <div class="icon-box">
+      <i class="bi bi-person-check-fill"></i>
+      <div class="content" *ngFor="let num_u of num_users">
+        <h5>{{num_u.nrUsers}}</h5>
+        <p>Clienti inregistrati</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <i class="bi bi-cart-check"></i>
+      <div class="content" *ngFor="let num_o of num_orders">
+        <h5>{{num_o.nrOrders}}</h5>
+        <p>Comenzi plasate cu succes</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <i class="bi bi-easel"></i>
+      <div class="content" *ngFor="let num_co of num_courses">
+        <h5>{{num_co.nrCourses}}</h5>
+        <p>Cursuri predate</p>
+      </div>
+    </div>
+    <div class="icon-box">
+      <i class="bi bi-calendar-date"></i>
+      <div class="content" *ngFor="let num_a of num_appointments">
+        <h5>{{num_a.nrAppointments}}</h5>
+        <p>Programari facute</p>
+      </div>
+    </div>
+  </div>
+</div>

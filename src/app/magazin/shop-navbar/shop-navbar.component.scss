@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lora';
+}
+
+.navbar-shop {
+    background-color: #9d80ae;
+    height: 40px;
+    border-top: 1px solid black;
+    z-index: 100;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    list-style-type: none;
+    font-weight: 500;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 20px;
+    //margin-right: 20px;
+}
+
+.category {
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.drop-down {
+    display: none;
+    position: absolute;
+    background-color: #9d80ae;
+    min-width: 160px;
+    z-index: 100;
+    padding: 10px;
+    top: 116px
+}
+
+.drop-down a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.category:hover .drop-down {
+    display: block;
+}
+
+.drop-down {
+    li:hover {
+        font-weight: 7S00;
+        margin-left: 15px;
+    }
+}

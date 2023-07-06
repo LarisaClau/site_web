@@ -1,0 +1,36 @@
+.messages {
+    position: fixed;
+    top: 96px;
+    z-index: 1;
+    width: 100%;
+    padding-left: 45px;
+    padding-right: 45px;
+  
+    .message {
+      padding: 15px;
+      padding-left: 30px;
+      padding-right: 30px;
+      background-color: rgb(201, 211, 235);
+      color: #000000;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+  
+      button {
+        background-color: transparent;
+        border: transparent;
+        outline: none;
+        font-family: 25px;
+      }
+      
+    }
+  }
+  
+  .message-red {
+    border: 3px solid red!important;
+  }
+  
+  .message-green {
+    border: 3px solid green!important;
+  }

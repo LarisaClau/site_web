@@ -1,0 +1,101 @@
+<app-shop-navbar></app-shop-navbar>
+<div class="container-pg">
+    <div class="container-header-pg">
+        <header>
+            <div class="header-details">
+                <h1>{{category_title}}</h1>
+            </div>
+            <div class="header-toolbar">
+                <div class="col products-nr">{{totalProducts}} produse</div>
+                <div class="col filtre-final">
+                    <div class="filters">
+                        <button class="filter-section" (click)="showRightFilters = !showRightFilters">
+                            <div class="filter-title">Arata/ascunde filtre</div>
+                            <i class="bi bi-filter"></i>
+                        </button>
+                        <div class="filters-container" *ngIf="showFilters">
+                            <span>Categorii</span>
+                            <ul class="fi">
+                                <li>Base cote</li>
+                                <li>Rubber base</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sort-by">
+                        <div class="sort">
+                            <button class="sort-dropdown" (click)="showDropdown = !showDropdown">{{ selectedOption ||
+                                'Sorteaza dupa - cele mai vandute' }}
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                        <ul *ngIf="showDropdown" class="d">
+                            <li (click)="selectOption('Sorteaza dupa - cele mai noi')">cele mai noi</li>
+                            <li (click)="selectOption('Sorteaza dupa - pret crescator')">pret crescator</li>
+                            <li (click)="selectOption('Sorteaza dupa - pret descrescator')">pret descrescator</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="container-products">
+        <div class="grid">
+            <div class="container-f" *ngIf="showRightFilters">
+                <mat-accordion multi>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Subcategorie</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="category" *ngFor="let subcategory of subcategory">
+                            <ul (click)="navigateToSubCategory(subcategory.id_subcategory)">
+                                <li>
+                                    {{subcategory.name}}
+                                </li>
+                            </ul>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Pret</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="price-interval">
+                            <p class="p"><input class="handle" [(ngModel)]="startValue" (input)="filterByPrice()"> lei</p>
+                            <p class="p"><input class="handle" [(ngModel)]="endValue" (input)="filterByPrice()"> lei</p>
+                        </div>
+                        <mat-slider min="0" max="500" [(ngModel)]="sliderValues" class="">
+                            <input [(ngModel)]="startValue" (input)="filterByPrice()" value="0" matSliderStartThumb>
+                            <input [(ngModel)]="endValue" (input)="filterByPrice()" value="500" matSliderEndThumb>
+                        </mat-slider>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Brand</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="brand" >
+                            <ul>
+                                <li *ngFor="let brand of brands">
+                                    <input type="checkbox" (click)="filterByBrand(brand.id_brand)" >
+                                    <label for="brand">{{brand.name}}</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div class="product" *ngFor="let product of products">
+                <a routerLinkActive="active" (click)="navigateToProduct(product.id)">
+                    <img src="{{product.image}}" alt="Produs1" />
+                </a>
+                <button id="myButton" class="buton-favorite">
+                    <i (click)="toggleShowAdd(product.id)" class="bi bi-heart" *ngIf="verifiyIfWishlist(product.id) === false"></i>
+                    <i (click)="toggleShowDelete(product.id)" class="bi bi-heart-fill"
+                    *ngIf="verifiyIfWishlist(product.id) === true"></i>
+                </button>
+                <h4>{{product.name}}</h4>
+                <h5>{{product.price}} lei</h5>
+                <button class="buton-adauga" (click)="AddCart(product.id)">Adauga in cos</button>
+            </div>
+
+        </div>
+    </div>
+</div>

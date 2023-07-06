@@ -1,0 +1,179 @@
+<div class="account-container">
+    <!-- <img src="../../assets/decor1.png"> -->
+    <div class="row">
+        <div class="col">
+            <div class="title">
+                <h2>Cont</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-3">
+            <app-account-menu></app-account-menu>
+        </div>
+
+        <div class="col-9">
+            <div class="row">
+                <div class="container-acc">
+
+                    <h5 class="info">Informatii cont</h5>
+
+                    <section class="container i">
+                        <span div="details">Detalii cont</span>
+                        <button class="btn-open" (click)="toggleText()">Afiseaza</button>
+                        <div *ngIf="isExpanded1" id="myText">
+                            <form [formGroup]="detaliiCont" class="form">
+                                <div class="testt">
+                                    <div class="test">
+                                        <label class="n">Nume</label>
+                                        <input class="bii" type="text" placeholder="" name="name" formControlName="name"
+                                            value="dffg" [(ngModel)]="userName" required />
+                                        <div class="err" *ngIf="f.name.touched && f.name.errors">
+                                            <div *ngIf="f.name.errors.required">Completeaza numele</div>
+                                        </div>
+                                    </div>
+                                    <div class="test">
+                                        <label class="n">Prenume</label>
+                                        <input class="bii" type="text" placeholder="{{userFname}}" name="fname"
+                                            formControlName="fname" [(ngModel)]="userFname" required />
+                                        <div class="err" *ngIf="f.fname.touched && f.fname.errors">
+                                            <div *ngIf="f.fname.errors.required">Completeaza prenumele</div>
+                                        </div>
+                                    </div>
+                                    <div class="test">
+                                        <label class="n">Data nasterii</label>
+                                        <input class="bii date" type="date" formControlName="date" placeholder=""
+                                            [(ngModel)]="userBirthday" />
+                                    </div>
+                                    <div class="test">
+                                        <label class="n">Telefon</label>
+                                        <input class="bii" type="number" placeholder="" formControlName="phone"
+                                            [(ngModel)]="userPhone" required />
+                                        <div class="err" *ngIf="f.phone.touched && f.phone.errors">
+                                            <div *ngIf="f.phone.errors.required">Completeaza nr. de telefon</div>
+                                            <div *ngIf="f.phone.errors.pattern">Numarul de telefon trebuie sa aiba 10
+                                                cifre.</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn-save" [disabled]="detaliiCont.status === 'INVALID'"
+                                        [ngClass]="{'disabled': detaliiCont.status === 'INVALID'}"
+                                        (click)="onSubmitUserDetails(detaliiCont.get('name').value, detaliiCont.get('fname').value, detaliiCont.get('date').value, detaliiCont.get('phone').value)">Salveaza
+                                        modificarile</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <section class="container i">
+                        <span div="email">Adresa de email</span>
+                        <button (click)="toggleTextt()">Afiseaza</button>
+                        <div *ngIf="isExpanded2" id="myText">
+                            <form [formGroup]="email" class="form">
+                                <div class="test email-input">
+                                    <label class="n">Email</label>
+                                    <input class="bii" type="text" placeholder="" name="email" formControlName="email"
+                                        [(ngModel)]="userEmail" required email readonly />
+                                    <div class="err" *ngIf="fo.email.touched && fo.email.errors">
+                                        <div *ngIf="fo.email.errors.required">Completeaza adresa de email</div>
+                                        <div *ngIf="fo.email.errors.email">Adresa de email nu este valida</div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section class="container i">
+                        <span div="password">Parola</span>
+                        <button (click)="toggleTexttt()">Afiseaza</button>
+                        <div *ngIf="isExpanded3" id="myText">
+                            <form [formGroup]="password" class="form">
+                                <div class="testt">
+                                    <div class="test">
+                                        <label class="n">Parola actuala</label>
+                                        <input class="bii" [type]="showpassword ? 'text': 'password'"
+                                            placeholder="*********" name="password" formControlName="password" required>
+                                        <i (click)="toggleShow()" class="bi bi-eye eye" *ngIf="showpassword"></i>
+                                        <i (click)="toggleShow()" class="bi bi-eye-slash eye" *ngIf="!showpassword"></i>
+                                        <div class="err" *ngIf="for.password.touched && for.password.errors">
+                                            <div class="error-message" *ngIf="for.password.errors.required">Completeaza
+                                                parola actuala</div>
+                                        </div>
+                                    </div>
+                                    <div class="test">
+                                        <label class="n">Parola noua</label>
+                                        <input class="bii" [type]="shownewpassword ? 'text': 'password'"
+                                            placeholder="*********" name="newpassword" formControlName="newpassword"
+                                            required>
+                                        <i (click)="toggleShoww()" class="bi bi-eye eye" *ngIf="shownewpassword"></i>
+                                        <i (click)="toggleShoww()" class="bi bi-eye-slash eye"
+                                            *ngIf="!shownewpassword"></i>
+                                        <div class="err" *ngIf="for.newpassword.touched && for.newpassword.errors">
+                                            <div class="error-message" *ngIf="for.newpassword.errors.required">
+                                                Completeaza parola noua</div>
+                                            <div class="error-message" *ngIf="for.newpassword.errors.minlength">Parola
+                                                trebuie sa aiba minim 8
+                                                caractere</div>
+                                            <div class="error-message"
+                                                *ngIf="!for.newpassword.errors.minlength && for.newpassword.errors.pattern">
+                                                Alege o parola mai puternica.</div>
+                                        </div>
+                                    </div>
+                                    <div class="test">
+                                        <label class="n">Confirma parola noua</label>
+                                        <input class="bii" [type]="showconfirmationnewpassword ? 'text': 'password'"
+                                            placeholder="*********" name="confirmationnewpassword"
+                                            formControlName="confirmationnewpassword" required>
+                                        <i (click)="toggleShowww()" class="bi bi-eye eye"
+                                            *ngIf="showconfirmationnewpassword"></i>
+                                        <i (click)="toggleShowww()" class="bi bi-eye-slash eye"
+                                            *ngIf="!showconfirmationnewpassword"></i>
+                                        <div class="err"
+                                            *ngIf="for.confirmationnewpassword.touched && for.confirmationnewpassword.errors">
+                                            <div class="error-message"
+                                                *ngIf="for.confirmationnewpassword.errors.required">Confirma parola noua
+                                            </div>
+                                            <div class="error-message"
+                                                *ngIf="for.confirmationnewpassword.errors.MustMatch">Completeaza parola
+                                                identic</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn-save" [disabled]="password.status === 'INVALID'"
+                                        [ngClass]="{'disabled': password.status === 'INVALID'}"
+                                        (click)="onSubmitUserPassword(password.get('password').value, password.get('newpassword').value)">Salveaza
+                                        modificarile</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section class="container i">
+                        <span div="address">Adrese</span>
+                        <button (click)="toggleTextttt()">Afiseaza</button>
+                        <div *ngIf="isExpanded4" id="myText">
+                            <form [formGroup]="address" class="form">
+                                <div class="testt">
+                                    <div class="test">
+                                        <label class="n">Adresa</label>
+                                        <input class="bii" type="address" placeholder="" name="address"
+                                            formControlName="address" [(ngModel)]="userAddress" required />
+                                        <div class="err" *ngIf="form.address.touched && form.address.errors">
+                                            <div class="error-message" *ngIf="form.address.errors.required">Completeaza
+                                                parola</div>
+                                            <div class="error-message" *ngIf="form.address.errors.minlength">Completeaza
+                                                adresa completa</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn-save" [disabled]="address.status === 'INVALID'"
+                                        [ngClass]="{'disabled': address.status === 'INVALID'}"
+                                        (click)="onSubmitUserAddress(address.get('address').value)">Salveaza
+                                        modificarile</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

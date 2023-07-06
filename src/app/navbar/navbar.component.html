@@ -1,0 +1,48 @@
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="bi bi-list"></label>
+    <a href="#" class="logo"><img src="../../assets/logo.png" alt="Delicate Nails" /></a>
+    <nav class="navbar">
+        <a [ngClass]="{'active': url === '/'}" routerLink="/">Acasa</a>
+        <a [ngClass]="{'active': url === '/magazin'}" routerLink="/magazin">Magazin</a>
+        <a [ngClass]="{'active': url === '/cursuri'}" routerLink="/cursuri">Cursuri</a>
+        <a [ngClass]="{'active': url === '/programari-unghii'}" routerLink="/programari-unghii">Programari unghii</a>
+        <div class="search">
+            <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Cauta" [(ngModel)]="searchValue" (ngModelChange)="onSearchChange($event)" [ngModelOptions]="{standalone: true}"/>
+                <button type="button" class="btn btn bi bi-search"></button>
+              </form>   
+        </div>
+    </nav>
+    <div class="icon-user" (click)="toggleUser()">
+        <div class="bi bi-person user"></div>
+        <div class="user-panou" *ngIf="toggleUserBoolean">
+            <div class="user-buttons">
+                <div class="u" routerLinkActive="active" routerLink="/account" *ngIf="currentUser">Contul tau</div>
+                <div class="u" routerLinkActive="active" routerLink="/login" *ngIf="!currentUser">Intra in cont</div>
+                <div class="u" routerLinkActive="active" routerLink="/register" *ngIf="!currentUser">Creaaza cont</div>
+                <div class="u" routerLinkActive="active" routerLink="/logout" (click)="logout()" *ngIf="currentUser">Deconectare</div>
+            </div>
+        </div>
+    </div>
+    <div class="icons-right">
+        <ul>
+            <li class="link facebook" ><a routerLinkActive="active" routerLink="/wishlist" class="bi bi-heart"></a></li>
+            <li class="link instagram"><a routerLinkActive="active" routerLink="/cart" class="bi bi-bag"></a></li>
+        </ul>
+    </div>
+    <div class="num-products">
+        <div class="num">{{numarProduse}}</div>
+    </div>
+</header>
+
+<div class="searchResultsNoData" *ngIf="booleanForSearch && (zeroProductsMessage != '')"> {{zeroProductsMessage}}</div>
+<div class="searchResults" *ngIf="booleanForSearch && (zeroProductsMessage == '')" [style.height.px]="calculateHeight()">
+    <div  *ngFor="let produs of produseCautate" class="product" (click)="navigateToProduct(produs.id)">
+        <a routerLinkActive="active">
+            <img src="{{produs.image}}" alt="Imagine lipsa" class="product-img" />
+        </a>
+        {{produs.name}}
+    </div>
+</div>
+

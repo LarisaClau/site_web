@@ -1,0 +1,112 @@
+* {
+    font-family: 'Lora';
+    box-sizing: border-box;
+}
+
+.account-container {
+    .row {
+        .col {
+            padding: 30px 40px;
+
+            h2 {
+                text-shadow: 2px 2px 2px black;
+                margin-left: 110px;
+            }
+        }
+    }
+
+    .col-3 {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .col-9 {
+        padding-bottom: 50px;
+        padding-right: 50px;
+        gap: 10px;
+
+        .container-acc {
+            background-color: rgb(229, 214, 237);
+            width: 1090px;
+            padding: 30px;
+            box-shadow: 1px 1px 14px 7px black;
+            border-radius: 2px;
+
+            .container-wishlist {
+                position: relative;
+                background: #fff;
+                padding: 25px;
+                border-radius: 3px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                margin-top: 25px;
+
+                .container-product {
+                    display: grid;
+                    grid-template-columns: 110px 632px 192px;
+                    grid-gap: 20px;
+
+                    .col1 {
+                        .product-img {
+                            height: 130px;
+                            width: 130px;
+                            object-fit: contain;
+                        }
+                    }
+
+                    .col2 {
+                        .availability {
+                            color: forestgreen;
+                            font-weight: bold;
+                        }
+
+                        .price {
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+
+                        .s {
+                            padding-bottom: 10px;
+                        }
+                    }
+
+                    .col3 {
+                        .buton-adauga {
+                            padding: 12px 20px;
+                            background-color: var(--button-bg-color);
+                            color: white;
+                            border: none;
+                            border-radius: 2px;
+                            font-size: 16px;
+                            width: 180px;
+                            transition: all 5s ease;
+                            position: relative;
+                            top: 58px;
+                            left: 10px;
+                            background-repeat: no-repeat;
+                            background-position: left bottom;
+                            transition: background-size 0.6s ease-in-out;
+                            background-size: 0% 100%;
+
+                        }
+
+                        .buton-adauga:hover {
+                            background-size: 100% 100%;
+                            background-image: linear-gradient(to right, #9d80ae, rebeccapurple);
+                        }
+
+                        .bi-trash3 {
+                            position: relative;
+                            display: flex;
+                            justify-content: flex-end;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.row {
+    --bs-gutter-x: 0;
+}

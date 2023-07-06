@@ -1,0 +1,13 @@
+
+    <section class="container" *ngIf="currentUser">
+        <h5 class="hello">Buna, {{currentUser[0].fname}} </h5>
+        <div class="list">
+            <ul class="items">
+                <li class="item" [ngClass]="{'active': url === '/account'}" routerLink="/account">Contul meu</li>
+                <li class="item" [ngClass]="{'active': url === '/orders'}" routerLink="/orders">Comenzile mele</li>
+                <li class="item" [ngClass]="{'active': url === '/wishlist'}" routerLink="/wishlist">Favorite</li>
+                <li class="item" [ngClass]="{'active': url === '/reviews'}" routerLink="/reviews">Recenziile mele</li><br>
+                <li class="item" [ngClass]="{'active': url === '/appointments'}" routerLink="/appointments">Programarile mele</li>
+            </ul>
+        </div>
+    </section>

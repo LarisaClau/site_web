@@ -1,0 +1,163 @@
+* {
+    font-family: 'Lora';
+    box-sizing: border-box;
+}
+
+.account-container {
+    background-color: white;
+}
+
+.account-img {
+    height: 100px;
+    width: 100%;
+    max-width: 100%;
+}
+
+// .acc-img {
+//     //display: inline-block;
+//     //width: 100%;
+//     //max-width: 100%;
+//     //display: block;
+// }
+
+.img-text {
+    position: absolute;
+    top: 105px;
+    left: 200px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.col-3 {
+    background-color: rgb(190, 207, 202);
+    padding: 50px;
+}
+
+.col-9 {
+    background-color: rgb(194, 227, 217);
+    padding: 50px;
+    display: flex;
+    gap: 10px;
+}
+
+ul {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+li {
+    padding: 5px;
+}
+
+li:hover {
+    color: #895fa3;
+}
+
+.hello {
+    padding: 35px;
+}
+
+.i {
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+.info {
+    padding: 20px;
+}
+
+.container {
+    position: relative;
+    //max-width: 1000px;
+    //width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 5px rgb(229, 214, 237) ;
+
+}
+
+button {
+    //position: relative;
+    display: flex;
+    float: right;
+    padding: 9px 20px;
+    //background-color: #668b68;
+    color: white;
+    border: none;
+    font-size: 13px;
+    width: 88px;
+    //top:395px;
+    //left: 90px;
+    transition: all 5s ease;
+}
+
+form .input-box {
+    position: relative;
+    height: 65px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #000000;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+label {
+    padding-bottom: 5px;
+    color: #a3a3a3;
+    font-size: 13px;
+}
+
+.b {
+    border: none;
+    display: flex;
+    outline: none;
+    color: #000000;
+    width: 300px;
+}
+
+/////////////////////////// test nume
+.bi {
+    border-radius: 3px;
+    color: #a5a2a2;
+    border: 1px solid #d4d4d4;
+    padding: 26px 10px 10px;
+    padding-right: 648px;
+    width: 100%;
+}
+
+ .test {
+     display: flex;
+     position: relative;
+     padding-top: 20px;
+     width: 100%;
+
+     .date {
+        padding-right: 722.4px;
+     }
+ }
+
+.n {
+    position: absolute;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    width: 100%;
+}
+//////////////////////////////////
+
+.btn-save {
+    margin-top: 10px;
+    width: 167px;
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
+
+.active {
+    color: #895fa3;
+    font-weight: bold;
+    font-size: 18px;
+}

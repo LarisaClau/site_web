@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Loras';
+}
+
+.img {
+    width: 100%;
+    height: 500px;
+}
+
+.text {
+    background-image: linear-gradient(to top, white, white, transparent);
+    left: 310px;
+    top: -270px;
+    position: relative;
+    max-width: 900px;
+    max-height: 520px;
+    width: 100%;
+    padding: 25px;
+
+}
+
+h4 {
+    font-weight: 700;
+    border-bottom: 1px solid black;
+    margin-bottom: 200px;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 17px;
+}
+
+.first-text {
+    margin-bottom: 40px;
+}
+
+.second-text {
+    margin-bottom: 40px;
+}
+
+.hidden {
+    opacity: 0;
+    transition: opacity 3s ease;
+}
+
+.visible {
+    opacity: 1;
+}

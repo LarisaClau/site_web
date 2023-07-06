@@ -1,0 +1,76 @@
+<div class="account-container">
+    <div class="row">
+        <div class="col">
+            <div class="title">
+                <h2>Cont</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-3">
+            <app-account-menu></app-account-menu>
+        </div>
+
+        <div class="col-9">
+            <div class="row">
+                <div class="container-acc">
+                    <h5 class="info">Lista de favorite</h5>
+
+                    <div class="container-wishlist" *ngFor="let product of wishlist">
+                        <div class="container-product" >
+                            <div class="col1"  routerLinkActive="active" (click)="navigateToProduct(product.id)">
+                                <img class="product-img" src="{{product.image}}">
+                            </div>
+                            <div class="col2"  routerLinkActive="active" (click)="navigateToProduct(product.id)">
+                                <div class="name s">{{product.name}}</div>
+                                <div class="availability s">In stoc</div>
+                                <div class="price s">{{product.price}} lei</div>
+                            </div>
+                            <div class="col3">
+                                <i class="bi bi-trash3" (click)="removeFromWishlist(product.id, product.id_wishlist)"></i>
+                                <button class="buton-adauga" (click)="AddCart(product.id)">Adauga in cos</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="container-wishlist" *ngFor="let courses of wishlistCourses">
+                        <div class="container-product" >
+                            <div class="col1"  routerLinkActive="active" (click)="navigateToCourse(courses.id)">
+                                <img class="product-img" src="{{courses.img}}">
+                            </div>
+                            <div class="col2"  routerLinkActive="active" (click)="navigateToCourse(courses.id)">
+                                <div class="name s">{{courses.name}}</div>
+                                <div class="availability s">In stoc</div>
+                                <div class="price s">{{courses.price}} lei</div>
+                            </div>
+                            <div class="col3">
+                                <i class="bi bi-trash3" (click)="removeFromWishlist(courses.id, courses.id_wishlist)"></i>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- <div class="container-wishlist">
+                        <div class="container-product">
+                            <div class="col1">
+                                <img class="product-img" src="..\assets\curs1.jpeg">
+                            </div>
+                            <div class="col2">
+                                <div class="name s">Pila buffer profesionala Super Lasting 100/150</div>
+                                <div class="availability s">In stoc</div>
+                                <div class="price s">9 lei</div>
+                            </div>
+                            <div class="col3">
+                                <i class="bi bi-trash3"></i>
+                                <button class="buton-adauga">Adauga in cos</button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="container-cart">
+    <div class="row">
+        <div class="col-8">
+            <div class="row">
+                <h2>Cos cumparaturi</h2>
+                <hr>
+
+                <div class="data" *ngIf="cart.length > 0">
+                    <div class="subtitle"><strong>Produse</strong></div>
+                    <div class="container-products" *ngFor="let product of cart; index as i">
+                        <div class="product" *ngIf="product.product_type == 'product'">
+    
+                            <div class="col1" routerLinkActive="active" (click)="navigateToProduct(product.id)">
+                                <img class="product-img" src="{{product.image}}">
+                            </div>
+                            <div class="col2">
+                                <div class="name s" routerLinkActive="active" (click)="navigateToProduct(product.id)">
+                                    {{product.name}}</div>
+                                <div class="availability s">{{product.stoc}}</div>
+    
+                                <div class="q-add">
+                                    <div class="w">
+                                        <div class="test" [hidden]="showTest">
+                                            <button (click)="decreaseQuantity(product.id, i)"
+                                                class="btn-mp btn-left">-</button>
+                                            <input class="input-q s" type="number" [(ngModel)]="product.quantity"
+                                                [value]="showTest ? quantity : 1" readonly>
+                                            <button (click)="increaseQuantity(product.id, i)"
+                                                class="btn-mp btn-right">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="price s">{{product.price}} lei</div>
+                                </div>
+                            </div>
+    
+                            <div class="col3">
+                                <i class="bi bi-trash3" (click)="removeFromCart(product.id_cart, product.quantity)"></i>
+                                <button id="myButton" class="buton-favorite">
+                                    <i (click)="toggleShowAdd(product.id)" class="bi bi-heart heart" *ngIf="verifiyIfWishlist(product.id) === false"></i>
+                                    <i (click)="toggleShowDelete(product.id)" class="bi bi-heart-fill heart" *ngIf="verifiyIfWishlist(product.id) === true"></i>
+                                </button>
+                                <div class="total">Total: <span>{{product.price_total}} lei</span></div>
+                            </div>
+    
+                        </div>
+                        <hr>
+                    </div>
+                    
+    
+    
+                    <div class="subtitle"><strong>Cursuri</strong></div>
+    
+                    <div class="container-products" *ngFor="let course of cartCourse; index as i">
+                        <div class="product" *ngIf="course.product_type == 'course'">
+    
+                            <div class="col1" routerLinkActive="active" (click)="navigateToCourse(course.id)">
+                                <img class="product-img" src="{{course.img}}">
+                            </div>
+                            <div class="col2">
+                                <div class="name s" routerLinkActive="active" (click)="navigateToCourse(course.id)">
+                                    {{course.name}}</div>
+                                <div class="availability s">In stoc</div>
+                                <br>
+                                
+                                <div class="city-course">Orasul: {{course.city}}</div>
+                                <div class="date-course">Perioada: {{course.date}} {{course.year}}</div>
+                            </div>
+    
+                            <div class="col3">
+                                <i class="bi bi-trash3" (click)="removeFromCart(course.id_cart, 1)"></i>
+                                <button id="myButton" class="buton-favorite">
+                                    <i (click)="toggleShowAddCourse(course.id)" class="bi bi-heart heart"  *ngIf="verifiyIfWishlistCourse(course.id) === false"></i>
+                                    <i (click)="toggleShowDeleteCourse(course.id)" class="bi bi-heart-fill heart" *ngIf="verifiyIfWishlistCourse(course.id) === true"></i>
+                                </button>
+                                <div class="total">Total: <span>{{course.price_total}} lei</span></div>
+                            </div>
+    
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="no-data" *ngIf="cart.length == 0">Nu exista produse in cos</div>
+            </div>
+        </div>
+
+
+        <div class="col-4">
+            <div class="container-sumar">
+                <div class="sumar">
+                    <div class="sumar-cart">
+                        <h2>Sumar cos</h2>
+                        <hr>
+                        <div class="sub-sum">
+                            <h5>Subtotal</h5>
+                            <div class="lei">
+                                <h6>{{total}} lei</h6>
+                            </div>
+                        </div>
+                        <div class="sum">
+                            <h5>Total</h5>
+                            <div class="lei">
+                                <h6>{{totalWithVoucher}} lei</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="voucher">
+                    <div class="both">
+                        <span>Ai un voucher?</span>
+                        <div (click)="toggleText()" class="add">Adauga-l aici</div>
+                    </div>
+                    <div *ngIf="isExpanded" id="myText" class="input">
+                        <input class="add-voucher" type="text" placeholder="Introdu codul aici" [(ngModel)]="voucher_code">
+                        <button class="button" (click)="applyVoucher()">Aplica</button>
+                    </div>
+                </div>
+                <button class="next" (click)="navigateToDelivery()">Pasul urmator <i
+                        class="bi bi-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

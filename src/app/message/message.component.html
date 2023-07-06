@@ -1,0 +1,8 @@
+<div class="messages" > 
+    <ng-container *ngIf="message$ | async as message"> 
+        <div class="message" [ngClass]="getMessageClass(type)">
+            {{ message }}
+            <button class="esc" (click)="onCloseClick()"><i class="bi bi-x-square"></i></button>
+        </div> 
+    </ng-container> 
+</div>

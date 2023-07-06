@@ -1,0 +1,14 @@
+<div class="navbar-shop">
+    <ul>
+        <li class="category" *ngFor="let category of category">
+            <a routerLinkActive="active" (click)="navigateToCategory(category.id_category)">{{category.name}}</a>
+            <ul class="drop-down" *ngIf="hasSubcategories(category)">
+                <li *ngFor="let subcategory of subcategory">
+                    <a *ngIf="subcategory.id_category == category.id_category " routerLinkActive="active"
+                        (click)="navigateToSubCategory(subcategory.id_subcategory)">{{subcategory.name}}
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

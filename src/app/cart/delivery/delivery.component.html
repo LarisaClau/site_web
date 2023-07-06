@@ -1,0 +1,194 @@
+<div class="container-d">
+    <div class="row">
+
+        <div class="col-8">
+            <div class="row">
+                <form [formGroup]="dateIntroduse">
+                    <div class="delivery-details">
+                        <div class="col1">
+                            <h4>Adresa de livrare</h4>
+
+                            <label for="country">Tara</label><br>
+                            <input type="text" id="country" name="country"><br>
+                            <label for="c">Judet</label><br>
+                            <input type="text" id="c" name="c"><br>
+                            <label for="address">Adresa</label><br>
+                            <input type="text" id="address" name="address" formControlName="shippingAddress"><br>
+                            <label for="city">Localitatea</label><br>
+                            <input type="text" id="city" name="city"><br>
+                            <label for="num">Nr. de telefon</label><br>
+                            <input type="number" id="num" name="num"><br>
+                            <label for="postcode">Cod postal</label><br>
+                            <input type="number" id="postcode" name="postcode"><br>
+                            <!-- <div class="save-address">
+                                <input type="checkbox" id="save" name="save">
+                                <label for="save">Salveaza adresa in cont</label>
+                            </div> -->
+                        </div>
+                        <div class="col2">
+                            <h4>Adresa de facturare</h4>
+                            <label for="same">
+                            <input type="radio" id="same" name="bill" formControlName="bill" value="Aceeasi ca adresa de livrare">
+                            Acceasi ca adresa de livrare</label><br>
+                            <label for="another">
+                            <input type="radio" id="another" name="bill" formControlName="bill" value="Adauga o adresa alternativa">
+                            Adauga o adresa alternativa</label><br>
+                            
+                            <div class="adresa-facturare" *ngIf="dateIntroduse.value.bill == 'Adauga o adresa alternativa'">
+                                <label for="address">Adresa</label><br>
+                                 <input type="text" id="address" name="shippingAddressBill" formControlName="shippingAddressBill"><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="delivery-method">
+                        <h4>Metoda de livrare</h4>
+                        <div class="col">
+                            <div class="col1">
+                                <label for="courier">
+                                <input type="radio" id="courier" name="delivery" formControlName="delivery" value="Livrare prin curier" (click)="setarePretLivrare(15)">
+                                Livrare prin curier </label><br>
+                                <hr>
+                                <label for="headquarters">
+                                <input type="radio" id="headquarters" name="delivery" formControlName="delivery" value="Ridicare de la sediu" (click)="setarePretLivrare(5)">
+                               Ridicare de la sediu</label><br>
+
+                                <div class="error-message" *ngIf="(orderButton && form.courier.errors)">Selecteaza
+                                    metoda de livrare!</div>
+                            </div>
+
+
+                            <div class="col2">
+                                <span>in 2 - 4 zile lucratoare</span>
+                                <hr>
+                                <span>in 1 zi lucratoare</span>
+                            </div>
+                            <div class="col3">
+                                <span>15 lei</span>
+                                <hr>
+                                <span>5 lei</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-method">
+                        <h4>Modalitate de plata</h4>
+                        <div class="col">
+                            <div class="col1">
+                                <label for="ramburs">
+                                <input type="radio" id="ramburs" name="payment" formControlName="payment" value="Plata ramburs">
+                               Plata ramburs</label>
+                            </div>
+                            <div class="col2">
+                                <div class="first-row align-end">
+                                    <label for="card">
+                                    <input type="radio" id="card" name="payment" formControlName="payment" value="Plata cu cardul">
+                                    Plata cu cardul</label>
+                                    <img src="../../assets/visa.png" alt="Visa Mastercard" />
+                                </div>
+                                <div class="content-row">
+
+                                    <div class="cardnumber">
+                                        <label for="cardnumber">Numarul cardului</label>
+                                        <input id="cardnumber" type=text pattern="[0-9]{13,16}" name="cardnumber"
+                                            requierd="true" placeholder=""><br>
+                                    </div>
+
+                                    <div class="expiry-date">
+                                        <label>Data expirarii</label>
+                                        <select name="month" id="month" onchange="" size="1">
+                                            <option value="00">MM</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                        /
+                                        <select name="year" id="year" onchange="" size="1">
+                                            <option value="00">YY</option>
+                                            <option value="01">23</option>
+                                            <option value="02">24</option>
+                                            <option value="03">25</option>
+                                            <option value="04">26</option>
+                                            <option value="05">27</option>
+                                            <option value="06">28</option>
+                                            <option value="07">29</option>
+                                            <option value="08">30</option>
+                                            <option value="09">31</option>
+                                            <option value="10">32</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="cvc">
+                                        <label id="cvc">CVC</label>
+                                        <input id="cvc" type="number" placeholder="***" maxlength="3" />
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="container-sumar">
+                <div class="sumar">
+                    <div class="sumar-cart">
+                        <h1>Sumar cos</h1>
+                        <hr>
+
+                        <div class="products-panel">
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>{{totalQuantity}} articole in cos</mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="products" *ngFor="let product of cart; index as i">
+                                    <p>{{product.quantity}} x {{product.name}}</p>
+                                </div><br>
+                                <div class="products" *ngFor="let course of cartCourse; index as i">
+                                    <p>{{course.quantity}} x {{course.name}}</p>
+                                </div>
+                            </mat-expansion-panel>
+
+                            <div class="back" routerLink="/cart">Modifica continutul cosului de cumparaturi</div>
+                        </div>
+                        <hr>
+
+                        <div class="sub-sum">
+                            <h5>Subtotal</h5>
+                            <div class="lei">
+                                <h6>{{total}} lei</h6>
+                            </div>
+                        </div>
+                        <div class="delivery">
+                            <h5>Livrare</h5>
+                            <div class="lei">
+                                <h6>{{pretLivrare}} lei</h6>
+                            </div>
+                        </div>
+                        <div class="sum">
+                            <h5>Total</h5>
+                            <div class="lei">
+                                <h6>{{totalWithVoucher}} lei</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <button class="btn-finish" routerLinkActive="active" [disabled]="dateIntroduse.status === 'INVALID'" [ngClass]="{'disabled': dateIntroduse.status === 'INVALID'}" (click)="sendOrder()">Trimite comanda</button>
+            </div>
+        </div>
+    </div>
+</div>

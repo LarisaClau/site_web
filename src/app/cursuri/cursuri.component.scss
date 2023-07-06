@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Loras';
+}
+
+section {
+    padding: 50px;
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, auto));
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+        cursor: pointer;
+        padding-top: 10px;
+
+        .box {
+            padding: 0px 20px 10px 20px;
+            background: transparent;
+            box-shadow: 5px 30px 56px black;
+            border-radius: 5px;
+            position: relative;
+            transition: all .35s ease;
+            background-color: rgb(229, 214, 237);
+
+            img {
+                height: 450px;
+                width: 350px;
+            }
+
+            .bi-plus-lg {
+                padding-left: 10px;
+            }
+
+            .buton-adauga {
+                position: absolute;
+                display: none;
+                padding: 12px 20px;
+                background-color: var(--button-bg-color);
+                color: white;
+                border: none;
+                font-size: 16px;
+                width: 180px;
+                top: 395px;
+                left: 90px;
+                transition: all 5s ease;
+            }
+
+            .buton-adauga:hover .apare {
+                display: flex;
+            }
+
+            .buton-favorite {
+
+                padding: 12px 15px;
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
+                border: none;
+                font-size: 16px;
+                align-items: center;
+                top: 395px;
+                left: 290px;
+                z-index: 100;
+            }
+
+            h4 {
+                transition: all 0.15s ease;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.0);
+                font-size: 20px
+            }
+
+            h4:hover {
+                color: #9d80ae;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+}

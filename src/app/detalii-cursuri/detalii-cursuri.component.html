@@ -1,0 +1,299 @@
+<div class="pg" *ngFor="let course of course">
+    <div class="col-6">
+        <img class="imgCurs" src="{{course.img}}" />
+    </div>
+    <div class="col-6">
+        <form [formGroup]="dateIntroduse">
+            <h3>{{course.name}}</h3>
+            <h4>{{course.price}} lei</h4>
+            <p class="trainer">Trainer: {{course.trainer}}</p>
+            <p>Durata curs: {{course.duration}} intensiv</p>
+            <p>Program {{course.schedule}}</p>
+            <p>Pauza de pranz {{course.break}}</p>
+            <div class="value">
+                <div class="label">
+                    <label for="an">Anul</label>
+                </div>
+                <select id="an" class name="attribute_an" data-attribute_name="attribute_an" data-show-option-none="yes"
+                    formControlName="year" (change)="onYearSelect()">
+                    <option value="">Alege o optiune</option>
+                    <option *ngFor="let year of years" [ngValue]="year.id_y" class="attached enable">{{year.year}}
+                    </option>
+                </select>
+                <div class="error-message"
+                    *ngIf="(form.year.touched && form.year.errors) || (apasatPeAddToCart && form.year.errors)">
+                    Selectarea anului este obligatorie</div>
+                <div class="label">
+                    <label for="oras">Oras sustinere curs</label>
+                </div>
+                <select id="oras" class name="attribute_oras" data-attribute_name="attribute_oras"
+                    data-show-option-none="yes" (change)="onCitySelect()" formControlName="city"
+                    *ngIf="anSelectatBoolean">
+                    <option value="">Alege o optiune</option>
+                    <option *ngFor="let city of cities" [ngValue]="city.id_c" class="attached enable">{{city.city}} 
+                    </option>
+                </select>
+                <select disabled *ngIf="!anSelectatBoolean">
+                    <option value="">Alege o optiune</option>
+                </select>
+                <div class="error-message"
+                    *ngIf="(form.city.touched && form.city.errors)  || (apasatPeAddToCart && form.city.errors)">
+                    Selectarea orasului este obligatorie</div>
+                <div class="label">
+                    <label for="data">Data sustinere curs</label>
+                </div>
+                <select id="data" class name="attribute_data" data-attribute_name="attribute_data"
+                    data-show-option-none="yes" formControlName="data" *ngIf="orasSelectatBoolean">
+                    <option value="">Alege o optiune</option>
+                    <option *ngFor="let date of dates" [ngValue]="date.date" class="attached enable">{{date.date}}</option>
+                </select>
+                <select disabled *ngIf="!orasSelectatBoolean">
+                    <option value="">Alege o optiune</option>
+                </select>
+                <div class="error-message"
+                    *ngIf="(form.data.touched && form.data.errors) || (apasatPeAddToCart && form.data.errors)">
+                    Selectarea datei este obligatorie</div>
+            </div>
+            <div class="option">
+                <div class="i">Varsta</div>
+                <label class="checkbox" for="checkbox16Ani">
+                    <div class="test">
+                        <input type="checkbox" name="" id="checkbox16Ani" formControlName="varsta"
+                            (click)="onVarstaClick()" />
+                        <div class="t">Declar ca am peste 16 ani</div>
+                    </div>
+                    <div *ngIf="(form.varsta.touched && !varstaBoolean)  || (apasatPeAddToCart && !varstaBoolean)"
+                        class="error-message">Trebuie sa bifati aceasta casuta</div>
+                </label>
+
+                <div class="i">Predai cursuri in domeniu?</div>
+                <div class="testut">
+                    <div class="option">
+                        <label class="radio" for="radioPredareDa">
+                            <input type="radio" name="teach" id="radioPredareDa" value="da"
+                                formControlName="teach" />
+                            Da
+                        </label>
+                    </div>
+                    <div class="option">
+                        <label class="radio" for="radioPredareNu">
+                            <input type="radio" name="teach" id="radioPredareNu" value="nu"
+                                formControlName="teach" />
+                            Nu
+                        </label>
+                    </div>
+                    <div class="error-message"
+                    *ngIf="(form.teach.touched && form.teach.errors) || (apasatPeAddToCart && form.teach.errors)">
+                    Selecteaza daca predai sau nu cursuri!</div>
+                </div>
+                <div class="i">Plata</div>
+                <div class="testut">
+                        <div class="option">
+                            <label class="radio" for="radioPlataAvans">
+                                <input type="radio" value="avans" id="radioPlataAvans"  name="payment" formControlName="payment">
+                                Platesc avansul ({{course.rate_1}} lei)
+                            </label>
+                        </div>
+                        <div class="option">
+                            <label class="radio" for="radioPlataIntegral">
+                                <input type="radio" value="integral" id="radioPlataIntegral" name="payment" formControlName="payment">
+                                Platesc suma intreaga
+                            </label>
+                        </div>
+                        <div class="error-message"
+                    *ngIf="(form.payment.touched && form.payment.errors) || (apasatPeAddToCart && form.payment.errors)">
+                    Selecteaza metoda de plata!</div>
+                </div>
+            </div>
+            <br>
+            <!-- <div class="p">Total de plata:</div> -->
+            <div class="cart">
+                <button class="buton-adauga" (click)="addToCart(course.id)">
+                    <span>Adauga in cos</span>
+                </button>
+                <button id="myButton" class="buton-favorite">
+                    <i (click)="toggleShowAdd(course.id)" class="bi bi-heart" *ngIf="verifiyIfWishlist(course.id) === false"></i>
+                    <i (click)="toggleShowDelete(course.id)" class="bi bi-heart-fill" *ngIf="verifiyIfWishlist(course.id) === true"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="tabs-container">
+    <ul class="u">
+        <li (click)="onTabClick('Descriere')" [class.active]="activeTab =='Descriere'" class="tab-link">Descriere</li>
+        <li (click)="onTabClick('Informatii suplimentare')" [class.active]="activeTab =='Informatii suplimentare'"
+            class="tab-link">Informatii suplimentare</li>
+        <li (click)="onTabClick('Recenzii')" [class.active]="activeTab =='Recenzii'" class="tab-link">Recenzii</li>
+    </ul>
+</div>
+<div *ngIf="activeTab == 'Descriere'" class="tabb">
+    <div class="row">
+        <div class="col-6">
+            <h3>Master - Level 2</h3>
+            <p><i class="bi bi-dot">Durata curs: 6 zile</i></p>
+            <p><i class="bi bi-dot">Program: intre ora 10:00 si 18:00 - 21:00</i></p>
+            <p><i class="bi bi-dot">Primesti diploma acreditata de stilist protezist unghii daca doresti.</i></p>
+            <p><i class="bi bi-dot">Primesti cadou suport de curs.</i></p>
+            <p><i class="bi bi-dot">Daca esti trainer, pretul cursului se dubleaza.</i></p>
+            <p><i class="bi bi-dot">Asiguram modele pentru partea practica.</i></p>
+            <p><i class="bi bi-dot">Asiguram produse pentru partea practica.</i></p>
+        </div>
+        <div class="col-6">
+            <h3>Pentru cine se adreseaza acest curs:</h3>
+            <p><i class="bi bi-arrow-right">aaaaaaa</i></p>
+            <p><i class="bi bi-arrow-right">rrrrrrrr</i></p>
+            <p><i class="bi bi-arrow-right">sssss</i></p>
+            <p><i class="bi bi-arrow-right">sssss</i></p>
+            <p><i class="bi bi-arrow-right">sssss</i></p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <h3 class="progrCurs">Programa cursului</h3>
+            <p><span>Ziua 1:</span> Cea mai complexa parte e teoriei, practica pe modele cu express manicure si aplicare
+                oja semi.</p>
+            <p><span>Ziua 2:</span> Teorie + manichiura dry combinata + Intretinere și corectarea arhitecturii, se
+                folosește acrygel cu degrade/babyboomer</p>
+            <p><span>Ziua 3:</span> Teorie + manichiura combinata și construcție pe șablon pătrat cu french de exterior
+                + incrustatie de cristale</p>
+            <p><span>Ziua 4:</span> Teorie + manichiura Combinata - constructie pe șablon oval slim + french glass</p>
+            <p><span>Ziua 5:</span> Teorie + manichiura Combinata + constructie pe tips full apex 50 migdala slim +
+                design</p>
+            <p><span>Ziua 6:</span> Teorie + manichiura combinata + construcție tips full cu balerina</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="activeTab == 'Informatii suplimentare'" class="tabb">
+    <div class="row">
+        <div class="col-6">
+            <h3 class="acte">Acte necesare:</h3>
+            <p><i class="bi bi-file-earmark-text"> Copie carte de identitate</i></p>
+            <h3 class="acte">Acte necesare pentru diploma acreditata:</h3>
+            <p><i class="bi bi-file-earmark-text"> Copie carte de identitate</i></p>
+            <p><i class="bi bi-file-earmark-text"> Copie certificat nastere</i></p>
+            <p><i class="bi bi-file-earmark-text"> Copie certificat de casatorie (daca e cazul)</i></p>
+            <p><i class="bi bi-file-earmark-text"> Diploma de absolvire (minim 12 clase) in Romania sau echivalata in
+                    Romania</i></p>
+            <p><i class="bi bi-file-earmark-text"> Adeverinta de la medicul de familie- Apt pentru cursul –
+                    Manichiurist</i></p>
+            <p><i class="bi bi-file-earmark-text"> Copie carte de identitate</i></p>
+        </div>
+        <div class="col-6">
+            <h3 class="instrumente">Instrumente necesare</h3>
+            <p>Următoarele instrumente iti vor fi oferite de către academie atât pentru utilizare cât și după
+                finalizarea cursului:</p>
+            <p><i class="bi bi-check-lg"> Pensulă liner sintetic 5/0</i></p>
+            <p><i class="bi bi-check-lg"> Pensulă nr 6 oval sintetic pentru aplicat gelul</i></p>
+            <p><i class="bi bi-check-lg"> Pensulă pentru acrygel</i></p>
+            <p><i class="bi bi-check-lg"> Forfecută pentru indepărtat cuticula</i></p>
+            <p><i class="bi bi-check-lg"> Forfecută pentru tăiat sabloanele </i></p>
+            <p><i class="bi bi-check-lg"> Pusher (șpaclu metalic) pentru împins cuticula</i></p>
+            <p><i class="bi bi-check-lg"> Capăt de freză diamantat flacără 0,21</i></p>
+            <p><i class="bi bi-check-lg"> Capăt de freză silicon carbid</i></p>
+            <p><i class="bi bi-check-lg"> Capăt freză diamantat cilindru sau sferă roșie 0,5</i></p>
+            <p><i class="bi bi-check-lg"> Capăt de freză carbid pentru îndepărtat oja semi sau gel abrazivitate roșie
+                    sau verde(tip 1)</i></p>
+            <p><i class="bi bi-check-lg"> Capăt de freză carbid roșu mic (de pilit pe dedesupt)</i></p>
+            <p><i class="bi bi-check-lg"> Perie de praf</i></p>
+        </div>
+    </div>
+</div>
+<div *ngIf="activeTab == 'Recenzii'" class="tabb">
+    <div class="row">
+        <div class="col-6">
+            <h3>Recenzii</h3>
+            <div class="rating">
+                <div class="col-4">
+                    <div class="media">
+                        <div class="media-title">Rating total</div>
+                        <div class="num-media">{{media_rating}}</div>
+                        <div class="media-text">bazat pe {{num_of_rating}} recenzii</div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="rating-stars">
+                        <div class="rating-bars">
+                            <div class="testutt">
+                                <div class="icon">5 stele </div>
+                                <div class="rating-bar">
+                                    <div class="bar" [style.width.%]="(stars5 / totalStars) * 100"></div>
+                                </div>
+                                <div class="rating-num">{{stars5}}</div>
+                            </div>
+                            <div class="testutt">
+                                <div class="icon">4 stele</div>
+                                <div class="rating-bar">
+                                    <div class="bar" [style.width.%]="(stars4 / totalStars) * 100"></div>
+                                </div>
+                                <div class="rating-num">{{stars4}}</div>
+                            </div>
+                            <div class="testutt">
+                                <div class="icon">3 stele</div>
+                                <div class="rating-bar">
+                                    <div class="bar" [style.width.%]="(stars3 / totalStars) * 100"></div>
+                                </div>
+                                <div class="rating-num">{{stars3}}</div>
+                            </div>
+                            <div class="testutt">
+                                <div class="icon">2 stele</div>
+                                <div class="rating-bar">
+                                    <div class="bar" [style.width.%]="(stars2 / totalStars) * 100"></div>
+                                </div>
+                                <div class="rating-num">{{stars2}}</div>
+                            </div>
+                            <div class="testutt">
+                                <div class="icon">1 stea <span> </span></div>
+                                <div class="rating-bar">
+                                    <div class="bar" [style.width.%]="(stars1 / totalStars) * 100"></div>
+                                </div>
+                                <div class="rating-num">{{stars1}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-review" *ngFor="let review of reviews_list; index as i">
+                <div class="review">{{review.review}}</div>
+                <hr>
+                <div class="column-name">
+                    <div class="user-name">{{review.user_name}}</div>
+                    <div class="date-stars">
+                        <ngb-rating [max]="5" [(rate)]="review.star" class="stars" [readonly]="true"
+                            disabled></ngb-rating>
+                        <div class="date">{{review.date_r | date: 'dd.MM.yyyy'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h3>Scrie recenzie</h3>
+            <form class="re" autocomplete="on" [formGroup]="review_details">
+                <div class="let-review">
+                    <p>Evaluarea ta</p>
+                    <ngb-rating [max]="5" [(rate)]="rating" (click)="GetRating()"></ngb-rating>
+                    <p><label for="review">Recenzia ta</label></p>
+                    <textarea id="review" name="review" formControlName="review" [(ngModel)]="review" required  rows="5" cols="64"></textarea>
+                    <div class="err" *ngIf="f.review.touched && f.review.errors">
+                        <div *ngIf="f.review.errors.required">Completeaza parerea ta despre curs!</div>
+                    </div>
+                    <div class="ddd">
+                        <div class="name">
+                            <p><label for="fname">Prenume:</label></p>
+                            <input type="text" id="fname" name="fname" formControlName="fname" [(ngModel)]="fname" required size="30">
+                            <div class="err" *ngIf="f.fname.touched && f.fname.errors">
+                                <div *ngIf="f.fname.errors.required">Completeaza prenumele tau!</div>
+                            </div>
+                        </div>
+                        <div class="emaill">
+                            <p><label for="email">Email:</label></p>
+                            <input type="text" id="email" name="email" value size="30">
+                        </div>
+                    </div>
+                    <button class="btn-save" (click)="onSubmitReview()" [disabled]="review_details.status === 'INVALID'" [ngClass]="{'disabled': review_details.status === 'INVALID'}">Trimite</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,189 @@
+<div *ngFor="let product of product">
+    <div class="product-container">
+        <div class="col col-left">
+            <div class="img">
+                <img src="{{product.image}}" alt="Produs1" class="product-img"/>
+            </div>
+        </div>
+
+        <div class="col col-right">
+            <div class="brand">
+                <h6>{{product.brand}}</h6>
+            </div>
+
+            <div class="name">
+                <h5><strong>{{product.name}}</strong></h5>
+            </div>
+            <hr>
+
+            <div class="ml-price">
+                <div class="col">
+                    <div class="ml">{{product.weight}} ml</div>
+                </div>
+                <div class="col right">
+                    <div class="price">{{product.price}} lei</div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="wishlist">
+                <button id="myButton" class="buton-favorite">
+                    <i (click)="toggleShowAdd(product.id)" class="bi bi-heart" *ngIf="verifiyIfWishlist(product.id) === false"></i>
+                    <i (click)="toggleShowDelete(product.id)" class="bi bi-heart-fill"
+                    *ngIf="verifiyIfWishlist(product.id) === true"></i>
+                    Adauga la lista de favorite
+                </button>
+            </div>
+
+            <div class="q-add">
+                <div class="w">
+                    <div class="quantity" [hidden]="showTest">
+                        <select class="q" id="q" name="quantity" (change)="onChangeQuantity($event.target.value)">
+                            <option value="1">1 buc</option>
+                            <option value="2">2 buc</option>
+                            <option value="3">3 buc</option>
+                            <option value="4">4 buc</option>
+                            <option value="5">5 buc</option>
+                            <option value="6">6 buc</option>
+                            <option value="7">7 buc</option>
+                            <option value="8">8 buc</option>
+                            <option value="9">9 buc</option>
+                            <option value="10">10 buc</option>
+                            <option value="11">10+ buc</option>
+                        </select>
+                    </div>
+
+                    <div class="test" [hidden]="!showTest">
+                        <button (click)="decreaseQuantity()" class="btn-mp btn-left">-</button>
+                        <input class="input-q" type="number" [(ngModel)]="quantity" [value]="!showTest ? quantity : 11"
+                            readonly>
+                        <button (click)="increaseQuantity()" class="btn-mp btn-right">+</button>
+                    </div>
+                </div>
+
+
+                <button class="btn-cart" (click)="AddCart(product.id)">Adauga in cos</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="tabs-container">
+        <ul class="u">
+            <li (click)="onTabClick('Descriere')" [class.active]="activeTab =='Descriere'" class="tab-link">Descriere
+            </li>
+            <li (click)="onTabClick('Mod de utilizare')" [class.active]="activeTab =='Mod de utilizare'"
+                class="tab-link">
+                Mod de utilizare</li>
+            <li (click)="onTabClick('Recenzii')" [class.active]="activeTab =='Recenzii'" class="tab-link">Recenzii</li>
+        </ul>
+    </div>
+    <div *ngIf="activeTab == 'Descriere'" class="tabb">
+        <div class="describe">
+            <p>{{product.description}}</p>
+        </div>
+    </div>
+    <div *ngIf="activeTab == 'Mod de utilizare'" class="tabb">
+        <div class="ussage" >
+            <pre><p [innerHTML]="product.way_of_ussage"></p></pre>
+        </div>
+    </div>
+    <div *ngIf="activeTab == 'Recenzii'" class="tabb">
+        <div class="row">
+            <div class="col-6">
+                <h3>Recenzii</h3>
+
+                <div class="rating">
+                    <div class="col-4">
+                        <div class="media">
+                            <div class="media-title">Rating total</div>
+                            <div class="num-media" *ngIf="media_rating">{{media_rating}}</div>
+                            <div class="num-media" *ngIf="!media_rating">0</div>
+                            <div class="media-text">bazat pe {{num_of_rating}} recenzii</div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="rating-stars">
+                            <div class="rating-bars">
+                                <div class="testut">
+                                    <div class="icon">5 stele </div>
+                                    <div class="rating-bar">
+                                        <div class="bar" [style.width.%]="(stars5 / totalStars) * 100"></div>
+                                    </div>
+                                    <div class="rating-num">{{stars5}}</div>
+                                </div>
+                                <div class="testut">
+                                    <div class="icon">4 stele</div>
+                                    <div class="rating-bar">
+                                        <div class="bar" [style.width.%]="(stars4 / totalStars) * 100"></div>
+                                    </div>
+                                    <div class="rating-num">{{stars4}}</div>
+                                </div>
+                                <div class="testut">
+                                    <div class="icon">3 stele</div>
+                                    <div class="rating-bar">
+                                        <div class="bar" [style.width.%]="(stars3 / totalStars) * 100"></div>
+                                    </div>
+                                    <div class="rating-num">{{stars3}}</div>
+                                </div>
+                                <div class="testut">
+                                    <div class="icon">2 stele</div>
+                                    <div class="rating-bar">
+                                        <div class="bar" [style.width.%]="(stars2 / totalStars) * 100"></div>
+                                    </div>
+                                    <div class="rating-num">{{stars2}}</div>
+                                </div>
+                                <div class="testut">
+                                    <div class="icon">1 stea <span> </span></div>
+                                    <div class="rating-bar">
+                                        <div class="bar" [style.width.%]="(stars1 / totalStars) * 100"></div>
+                                    </div>
+                                    <div class="rating-num">{{stars1}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-review" *ngFor="let review of reviews_list; index as i">
+                    <div class="review">{{review.review}}</div>
+                    <hr>
+                    <div class="column-name">
+                        <div class="user-name">{{review.user_name}}</div>
+                        <div class="date-stars">
+                            <ngb-rating [max]="5" [(rate)]="review.star" class="stars" [readonly]="true"
+                                disabled></ngb-rating>
+                            <div class="date">{{review.date_r | date: 'dd.MM.yyyy'}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <h3>Scrie recenzie</h3>
+                <form class="re" autocomplete="on" [formGroup]="review_details">
+                    <div class="let-review">
+                        <p>Evaluarea ta</p>
+                        <ngb-rating [max]="5" [(rate)]="rating"></ngb-rating>
+                        <p><label for="review">Recenzia ta</label></p>
+                        <textarea id="review" name="review" formControlName="review" [(ngModel)]="review" required  rows="5" cols="64"></textarea>
+                        <div class="err" *ngIf="f.review.touched && f.review.errors">
+                            <div *ngIf="f.review.errors.required">Completeaza parerea ta despre produs!</div>
+                        </div>
+                        <div class="ddd">
+                            <div class="name">
+                                <p><label for="fname">Prenume:</label></p>
+                                <input type="text" id="fname" name="fname" formControlName="fname" [(ngModel)]="fname" required size="30">
+                                <div class="err" *ngIf="f.fname.touched && f.fname.errors">
+                                    <div *ngIf="f.fname.errors.required">Completeaza prenumele tau!</div>
+                                </div>
+                            </div>
+                            <div class="emaill">
+                                <p><label for="email">Email:</label></p>
+                                <input type="text" id="email" name="email" value size="30">
+                            </div>
+                        </div>
+                        <button class="btn-save" (click)="onSubmitReview()" [disabled]="review_details.status === 'INVALID'" [ngClass]="{'disabled': review_details.status === 'INVALID'}">Trimite</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

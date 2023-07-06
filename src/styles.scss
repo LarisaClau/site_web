@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+//@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@font-face {
+    font-family: 'Lora';
+    src: url('/assets/Lora.ttf');
+}
+
+/* html, body {
+    height: 100%;
+    background-image: linear-gradient(to top, #b4b3b2 50%, #6e6e6d 100%);
+  } */
+
+  // body {
+  //   background: linear-gradient(to top, #b4b3b2 50%, #6e6e6d 100%);
+  //   background-repeat: no-repeat;
+  //   background-size: 100% 100%;
+  // }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Lora'; }
+
+* {
+  font-family: 'Lora';
+}
+
+app-dialog {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+}
+
+
+:root {
+  --button-bg-color: #000000;
+}

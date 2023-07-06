@@ -1,0 +1,73 @@
+<div class="account-container">
+    <div class="row">
+        <div class="col">
+            <div class="title">
+                <h2>Cont</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-3">
+            <app-account-menu></app-account-menu>
+        </div>
+
+        <div class="col-9">
+
+            <div class="row">
+                <div class="container-acc">
+                    <h5 class="info">Recenziile mele</h5>
+
+                    <div class="container-wishlist" *ngFor="let review of reviews">
+                        <div class="container-product">
+                            <div class="col1"  routerLinkActive="active" (click)="navigateToProduct(review.id)">
+                                <img class="product-img" src="{{review.image}}">
+                            </div>
+                            <div class="col2"  routerLinkActive="active" (click)="navigateToProduct(review.id)">
+                                <div class="name s"><strong>{{review.name}}</strong>
+                                </div>
+                                <br>
+                                <div class="medium-rating s">
+                                    Rating-ul tau: 
+                                    <ngb-rating [max]="5" [(rate)]="review.star" class="stars" [readonly]="true" disabled></ngb-rating>
+                                </div>
+                                <div class="rating"><strong>Recenzia ta</strong></div>
+                                <div class="your-rating s">{{review.review}}</div>
+                                <div class="rating-date">{{review.date_r | date: 'dd.MM.yyyy'}}</div>
+                            </div>
+                            <div class="col3">
+                                <i class="bi bi-trash3" (click)="removeReview(review.id_review)"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-wishlist" *ngFor="let review_c of reviewsCourses">
+                        <div class="container-product">
+                            <div class="col1"  routerLinkActive="active" (click)="navigateToCourse(review_c.id)">
+                                <img class="product-img" src="{{review_c.img}}">
+                            </div>
+                            <div class="col2"  routerLinkActive="active" (click)="navigateToCourse(review_c.id)">
+                                <div class="name s"><strong>{{review_c.name}}</strong>
+                                </div>
+                                <br>
+                                <div class="medium-rating s">
+                                    Rating-ul tau: 
+                                    <ngb-rating [max]="5" [(rate)]="review_c.star" class="stars" [readonly]="true" disabled></ngb-rating>
+                                </div>
+                                <div class="rating"><strong>Recenzia ta</strong></div>
+                                <div class="your-rating s">{{review_c.review}}</div>
+                                <div class="rating-date">{{review_c.date_r | date: 'dd.MM.yyyy'}}</div>
+                            </div>
+                            <div class="col3">
+                                <i class="bi bi-trash3" (click)="removeReview(review_c.id_review)"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

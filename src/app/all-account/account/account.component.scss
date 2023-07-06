@@ -1,0 +1,158 @@
+* {
+    font-family: 'Lora';
+    box-sizing: border-box;
+}
+
+.account-container {
+    .row {
+        .col {
+            padding: 30px 40px;
+
+            h2 {
+                text-shadow: 2px 2px 2px black;
+                margin-left: 110px;
+            }
+        }
+    }
+
+    .row {
+        .col-3 {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .col-9 {
+            padding-bottom: 50px;
+            padding-right: 50px;
+            display: flex;
+            gap: 10px;
+
+            .container-acc {
+                background-color: rgb(229, 214, 237);
+                width: 1090px;
+                padding: 30px;
+                box-shadow: 1px 1px 14px 7px black;
+                border-radius: 2px;
+
+                .info {
+                    padding-bottom: 20px;
+                }
+
+                .container {
+                    position: relative;
+                    background: #fff;
+                    padding: 25px;
+                    border-radius: 3px;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+                    .btn-open {
+                        margin-bottom: 20px
+                    }
+
+                    button {
+                        display: flex;
+                        float: right;
+                        padding: 9px 20px;
+                        background-color: var(--button-bg-color);
+                        color: white;
+                        border: none;
+                        border-radius: 2px;
+                        font-size: 13px;
+                        width: 88px;
+                        transition: all 5s ease;
+                    }
+
+                    .form {
+                        .email-input {
+                            opacity: 0.7;
+                        }
+
+                        .test {
+                            position: relative;
+                            padding-top: 20px;
+                            width: 100%;
+
+                            .bii {
+                                border-radius: 3px;
+                                border: 1px solid #d4d4d4;
+                                padding: 26px 10px 10px;
+                                padding-right: 648px;
+                                width: 100%;
+                                color: rgb(100, 74, 74);
+                            }
+
+                            .n {
+                                position: absolute;
+                                padding-bottom: 10px;
+                                padding-left: 5px;
+                                width: 100%;
+                            }
+
+                            .input-box {
+                                position: relative;
+                                height: 65px;
+                                width: 100%;
+                                outline: none;
+                                font-size: 1rem;
+                                color: #e2bff4;
+                                margin-top: 20px;
+                                border: 1px solid #ddd;
+                                border-radius: 6px;
+                                padding: 0 15px;
+                            }
+
+                            .date {
+                                padding-right: 722.4px;
+                            }
+
+
+                            label {
+                                padding-bottom: 5px;
+                                color: #a3a3a3;
+                                font-size: 13px;
+                            }
+
+                            .err {
+                                color: red;
+                                margin-top: 5px;
+                            }
+
+                            .eye {
+                                position: absolute;
+                                right: 20px;
+                                bottom: 12px;
+                            }
+                        }
+
+                        .btn-save {
+                            margin-top: 10px;
+                            width: 167px;
+                            margin-bottom: 30px;
+                        }
+
+                        input.ng-touched.ng-invalid {
+                            border: 1px solid red !important;
+                        }
+
+                        .disabled {
+                            opacity: 0.5;
+                        }
+                    }
+                }
+
+                .i {
+                    margin-bottom: 25px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
+
+.testt {
+    padding-bottom: 40px;
+}

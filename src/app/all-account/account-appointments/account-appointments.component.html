@@ -1,0 +1,40 @@
+<div class="container-pg">
+    <div class="row">
+        <div class="col">
+            <div class="title">
+                <h2>Cont</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-3">
+            <app-account-menu></app-account-menu>
+        </div>
+
+        <div class="col-9">
+            <div class="container-acc">
+                <h5 class="info">Programari</h5>
+                <div class="row" >
+                    <div class="col" *ngFor="let appointment of appointments">
+                        <div class="container-appointment" [ngClass]="{'trecut': !checkDate(appointment.appointment_date)}">
+                            <h5>{{appointment.appointment_date.slice(0, 10)}}</h5>
+                            <hr>
+                            <div class="details">
+                                <p>{{appointment.service_name}}</p>
+                                <span>{{appointment.price}} lei</span>
+                            </div>
+                            <p>{{appointment.appointment_hour}}:00</p>
+                            <hr>
+                            <p><i class="bi bi-geo-alt-fill"></i> {{appointment.address}}</p>
+                            <p><i class="bi bi-telephone-fill"></i> {{appointment.phone}}</p>
+                            <h6>Tehnician {{appointment.name}}</h6>
+                            <button (click)="deleteAppointment(appointment.id_appointments)" *ngIf="checkDate(appointment.appointment_date)">Anuleaza</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

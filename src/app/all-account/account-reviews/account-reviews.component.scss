@@ -1,0 +1,89 @@
+* {
+    font-family: 'Lora';
+    box-sizing: border-box;
+}
+
+.account-container {
+    .row {
+        .col {
+            padding: 30px 40px;
+
+            //background-image: url("../../../assets/newsletter2.png");
+            h2 {
+                text-shadow: 2px 2px 2px black;
+                margin-left: 110px;
+            }
+        }
+    }
+
+    .row {
+        .col-3 {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .col-9 {
+            padding-bottom: 50px;
+            padding-right: 50px;
+            display: flex;
+            gap: 10px;
+
+            .container-acc {
+                background-color: rgb(229, 214, 237);
+                width: 1090px;
+                padding: 30px;
+                box-shadow: 1px 1px 14px 7px black;
+                border-radius: 2px;
+
+                .container-wishlist {
+                    position: relative;
+                    //max-width: 1000px;
+                    //width: 100%;
+                    background: #fff;
+                    padding: 25px;
+                    border-radius: 3px;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                    margin-top: 25px;
+
+                    .container-product {
+                        display: grid;
+                        grid-template-columns: 150px 632px 192px;
+                        grid-gap: 20px;
+
+                        .col1 {
+                            .product-img {
+                                height: 170px;
+                                width: 150px;
+                                object-fit: contain;
+                            }
+                        }
+
+                        .col2 {
+                            .s {
+                                padding-bottom: 10px;
+                            }
+
+                            .name {
+                                font-size: 18px;
+                            }
+                        }
+
+                        .col3 {
+                            .bi-trash3 {
+                                position: relative;
+                                display: flex;
+                                justify-content: flex-end;
+                                cursor: pointer;
+                                margin-right: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.row {
+    --bs-gutter-x: 0;
+}

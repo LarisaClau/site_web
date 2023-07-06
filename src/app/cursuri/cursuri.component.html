@@ -1,0 +1,13 @@
+<section class="produse">
+    <div class="container">
+        <div class="box" *ngFor="let course of courses">
+            <img src="{{course.img}}" alt="Curs" (click)="navigateToCourse(course.id)" />
+            <button id="myButton" class="buton-favorite">
+                <i (click)="toggleShowAdd(course.id)" class="bi bi-heart" *ngIf="verifiyIfWishlist(course.id) === false"></i>
+                <i (click)="toggleShowDelete(course.id)" class="bi bi-heart-fill" *ngIf="verifiyIfWishlist(course.id) === true"></i>
+            </button>
+            <h4 (click)="navigateToCourse(course.id)">{{course.name}}</h4>
+            <h5>{{course.price}} lei</h5>
+        </div>
+    </div>
+</section>

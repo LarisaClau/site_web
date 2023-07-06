@@ -1,0 +1,27 @@
+<section class="subscribe-area pb-10 pt-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="subscribe-text mb-15">
+                    <span>Aboneaza-te la newsletter</span>
+                    <p>Aboneaza-te la newslatter pentru a ramane la curent cu promotiile si cu tot ce apare nou</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="subscribe-wrapper subscribe2-wrapper mb-15">
+                    <div class="subscribe-form">
+                        <form action="#" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" class="form">
+                            <input placeholder="nume.prenume@email.com" type="email" name="email" formControlName="email" required
+                            email>
+                                <button>Aboneaza-te<i class="bi bi-arrow-right"></i></button>
+                                <div class="err" *ngIf="submitted && f.email.errors">
+                                    <div *ngIf="f.email.errors.required">Completeaza o adresa de email</div>
+                                    <div *ngIf="f.email.errors.email">Adresa de email nu este valida</div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,83 @@
+<div class="container-pg">
+  <div class="container-header">
+    <div class="header">
+      <p>
+        Dupa cum v-am obisnuit cu calitatea serviciilor oferite, atat pe partea
+        de produse cat si pe partea de cursuri, ne-am gandit sa venim in
+        ajutorul vostru si pe partea de programari.
+      </p>
+      <p>
+        Pentru noi siguranta clientilor este foarte importanta pe langa
+        calitate, de accea va prezentam cei mai de top tehnicieni la care va
+        veti putea programa pentru cele mai spectaculoase unghii.
+      </p>
+      <p>
+        Toti tehnicienii regasiti aici au trecut prin filtrul nostru, astfel
+        garantam servicii de manichiura la cele mai inalte standarde.
+      </p>
+      <p>Programeaza-te usor, rapid si sigur la tehnicianul preferat!</p>
+    </div>
+  </div>
+  <div class="container-filters">
+    <div class="title">
+      <h3>Tehnicieni unghii</h3>
+    </div>
+    <div class="filters">
+      <div class="prices">
+        <div class="pr">
+          <button class="sort-dropdown" (click)="showDropdownPrice = !showDropdownPrice">
+            {{ selectedOptionPrice || selectedPrice }}
+            <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+        <ul *ngIf="showDropdownPrice" class="p">
+          <li (click)="selectOptionPrice('Toate')">Toate</li>
+          <li (click)="selectOptionPrice('1')">$</li>
+          <li (click)="selectOptionPrice('2')">$$</li>
+          <li (click)="selectOptionPrice('3')">$$$</li>
+          <li (click)="selectOptionPrice('4')">$$$$</li>
+          <li (click)="selectOptionPrice('5')">$$$$$</li>
+        </ul>
+      </div>
+      <div class="location">
+        <div class="loc">
+          <button class="sort-dropdown" (click)="showDropdown = !showDropdown">
+            {{ selectedOption || selectedCity }}
+            <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+        <div *ngIf="showDropdown" class="l">
+          <select [size]="orase.length + 1">
+            <option (click)="selectOptionCity('Toate')">Toate</option>
+            <option *ngFor="let oras of orase" (click)="selectOptionCity(oras)">{{oras}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-tehnicians" >
+    <div class="tehnicians" >
+        <div class="tehnician" *ngFor="let tehnician of tehnicians; index as j" (click)="navigateToTehnician(tehnician.id_tehnician)" >
+          <div class="imgs">
+            <img src="{{tehnician.img_1}}" alt="unghii" class="img" />
+            <img src="{{tehnician.img_2}}" alt="tehnician" />
+          </div>
+          <div class="details">
+            <div class="name">
+              <span>Tehnician</span><strong> {{tehnician.name}}</strong>
+            </div>
+            <div class="about">
+              <p><i class="bi bi-flower3"><span>{{tehnician.describe_1}}</span></i></p>
+              <p><i class="bi bi-flower3"><span>{{tehnician.describe_2}}</span></i></p>
+              <p><i class="bi bi-flower3"><span>{{tehnician.describe_3}}</span></i></p>
+            </div>
+            <div class="price">
+              <span>Preturi</span>
+               <div class="icons" *ngFor="let i of generateArray(arrayDolari[j])"><i class="bi bi-currency-dollar"></i></div> 
+            </div>
+            <div class="address">{{tehnician.address}} {{tehnician.city}}</div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

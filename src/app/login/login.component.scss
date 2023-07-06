@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lora";
+
+}
+
+.container-pg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: url(../../assets/home-text-background.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+    header {
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: 500;
+      text-align: center;
+    }
+
+
+  }
+}
+
+
+
+.container .form {
+  margin-top: 30px;
+}
+
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-box label {
+  color: #333;
+}
+
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(15, 15, 16);
+  border-radius: 2px;
+}
+
+.form button:hover {
+  background: rgb(59, 59, 62);
+}
+
+
+.input-box {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  right: 20px;
+  bottom: 12px;
+
+}
+
+.error-message {
+  position: absolute;
+}
+
+.links {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.forgotp:hover {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.register:hover {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.err {
+  color: red;
+}
+
+input.ng-touched.ng-invalid {
+  border: 1px solid red !important;
+}
+
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+
+
+
+
+.messages {
+  position: fixed;
+  top: 96px;
+  z-index: 1;
+  width: 100%;
+  padding-left: 45px;
+  padding-right: 45px;
+
+  .message {
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: rgb(201, 211, 235);
+    color: #000000;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background-color: transparent;
+      border: transparent;
+      outline: none;
+      font-family: 25px;
+    }
+    
+  }
+}

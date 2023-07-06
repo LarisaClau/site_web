@@ -1,0 +1,164 @@
+<div class="container-detalii-tehnician">
+    <div class="columns">
+        <div class="col1">
+            <app-carousel [images]="images" [autoSlide]="true"></app-carousel>
+        </div>
+
+        <div class="col2">
+            <div class="name" *ngFor="let tehn of tehnician">
+                <h4>Servicii oferite de {{tehn.name}}</h4>
+            </div>
+            <div class="services">
+                <div class="container-f" *ngFor="let category of services_category">
+                    <mat-accordion multi *ngIf="hasAssociatedService(category)">
+                        <mat-expansion-panel [expanded]="true">
+                            <mat-expansion-panel-header>
+                                <div><mat-panel-title>{{category.category_name}}</mat-panel-title></div>
+                            </mat-expansion-panel-header>
+                            <div class="category">
+                                <ul>
+                                    <li>
+                                        <div *ngFor="let service of services">
+                                            <div class="subcategory"
+                                                *ngIf="category.id_category == service.id_category">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <div class="title">{{service.service_name}}</div>
+                                                        <div class="details">
+                                                            <div class="duration">Durata: {{service.duration}}</div>
+                                                            <div class="price">Pret: {{service.price}} lei</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button class="button"
+                                                            (click)="open(content, service.id_service, service.price)">
+                                                            Programeaza-te
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </div>
+        </div>
+        <div class="col3">
+            <div class="program" *ngFor="let tehn of tehnician">
+                <div class="title">
+                    <h5>Program de lucru</h5>
+                </div>
+                <ul>
+                    <li>
+                        <div class="dayss">
+                            <div class="day">Luni</div>
+                            <div class="time">{{tehn.monday}}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dayss">
+                            <div class="day">Marti</div>
+                            <div class="time">{{tehn.tuesday}}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dayss">
+                            <div class="day">Miercuri</div>
+                            <div class="time">{{tehn.wednesday}}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dayss">
+                            <div class="day">Joi</div>
+                            <div class="time">{{tehn.thursday}}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dayss">
+                            <div class="day">Vinerii</div>
+                            <div class="time">{{tehn.friday}}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dayss">
+                            <div class="day">Sambata</div>
+                            <div class="time">{{tehn.saturday}}</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dayss">
+                            <div class="day">Duminica</div>
+                            <div class="time">{{tehn.sunday}}</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="location" *ngFor="let tehn of tehnician">
+                <div class="title">
+                    <h5>Locatie</h5>
+                </div>
+                <div class="address">{{tehn.address}}, {{tehn.city}}</div><br>
+                <!-- <full-calendar #calendar [options]="calendarOptions"></full-calendar> -->
+
+                <!-- <iframe src="{{tehn.map_address}}" width="600" height="450" style="border: 0; border-radius: 2px"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Continut modal -->
+<ng-template #content let-modal class="my-modal">
+    <div class="modal-header">
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <div *ngIf="arataConfirmareRezervare == false">
+            <div class="calendar">
+                <div class="header">
+                    <button (click)="updateDate(-1)" class="button-month"><i class="bi bi-arrow-left"></i></button>
+                    <div class="month-year">{{ getMonthYear(date) }}</div>
+                    <button (click)="updateDate(1)" class="button-month"><i class="bi bi-arrow-right"></i></button>
+                </div>
+                <div class="days">
+                    <div *ngFor="let day of daysOfWeek" class="day-week">{{ day }}</div>
+                    <div *ngFor="let day of daysInMonth" class="all-day" (click)="onDayClick(day)"
+                        [ngClass]="{'selected-day': isDaySelected(day)}">
+                        <div class="date">{{ day ? day.getDate() : '' }}</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="hours" *ngIf="booleanForHours">
+                <div *ngFor="let ore of ore" (click)="rezervaOra(ore, verificareDacaExistaRezervare(ore))">
+                    <div class="hour" [ngClass]="{'disabled-hour': verificareDacaExistaRezervare(ore)}">
+                        {{ore}}
+                        <span class="ora-rezervata" *ngIf="verificareDacaExistaRezervare(ore)">Aceasta ora este
+                            rezervata</span>
+                    </div>
+                </div>
+                <div class="hour" *ngIf="ore.length == 0">Nu exista ore disponibile in aceasta zi.</div>
+            </div>
+        </div>
+        <div *ngIf="arataConfirmareRezervare == true">
+            <div class="container-modal">
+                <div class="text">Tehnician: {{tehnician[0].name}}</div>
+                <div class="text">Data rezervarii: {{selectedDay.toLocaleString()}}</div>
+                <div class="text">Ora rezervarii: {{oraRezervata}}:00</div>
+                <div class="text">Pret: {{priceForService}} lei</div>
+                <div class="buttons">
+                <button (click)="inapoiLaCalendar()" class="f"><i class="bi bi-arrow-left"></i></button>
+                <button (click)="rezervaAcum()" class="s">Confirma rezerva</button>
+                </div>
+            </div>
+
+            <!-- this.userId, this.idTehnician, this.selectedDay.toLocaleString(), this.selectedIdService, this.oraRezervata -->
+        </div>
+    </div>
+</ng-template>
